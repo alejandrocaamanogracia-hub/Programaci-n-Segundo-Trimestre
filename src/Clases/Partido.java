@@ -14,6 +14,45 @@ public class Partido{
         this.equipoVisitante = equipoVisitante;
     }
 
+    public Equipo getEquipoLocal() {
+        return equipoLocal;
+    }
+
+    public void setEquipoLocal(Equipo equipoLocal) {
+        this.equipoLocal = equipoLocal;
+    }
+
+    public boolean isJugado() {
+        return jugado;
+    }
+
+    public void setJugado(boolean jugado) {
+        this.jugado = jugado;
+    }
+
+    public int getGolesVisitante() {
+        return golesVisitante;
+    }
+
+    public void setGolesVisitante(int golesVisitante) {
+        this.golesVisitante = golesVisitante;
+    }
+
+    public int getGolesLocal() {
+        return golesLocal;
+    }
+
+    public void setGolesLocal(int golesLocal) {
+        this.golesLocal = golesLocal;
+    }
+
+    public Equipo getEquipoVisitante() {
+        return equipoVisitante;
+    }
+
+    public void setEquipoVisitante(Equipo equipoVisitante) {
+        this.equipoVisitante = equipoVisitante;
+    }
 
     public void jugarPartido(){
         Random rand = new Random();

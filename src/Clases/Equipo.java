@@ -97,8 +97,7 @@ public class Equipo {
             }
             if(contador==0){
                 jugadores.add(jugador);
-                recibirPuntosAtaque();
-                recibirPuntosDefensa();
+                actualizarPuntosEstadisticas();
             }
         }
     }
@@ -116,32 +115,26 @@ public class Equipo {
         golesContra++;
     }
 
-    public String getPortero(){
-        for(int i=0; i<jugadores.size(); i++){
-            if(jugadores.get(i).getPosicion().equalsIgnoreCase("Portero")){
+    public String getPortero() {
+        for (int i = 0; i < jugadores.size(); i++) {
+            if (jugadores.get(i).getPosicion().equalsIgnoreCase("Portero")) {
                 return jugadores.get(i).getNombre();
             }
         }
         return null;
     }
 
-    public void recibirPuntosAtaque(){
-        for(int i=0; i<jugadores.size(); i++){
-            if(jugadores.get(i).getPersonalidad().equalsIgnoreCase("Irascible")){
-                this.puntosAtaque+=2;
-            }
-            if(jugadores.get(i).getPersonalidad().equalsIgnoreCase("Normal")){
-                this.puntosAtaque++;
-            }
-        }
-    }
-    public void recibirPuntosDefensa(){
-        for(int i=0; i<jugadores.size(); i++){
-            if(jugadores.get(i).getPersonalidad().equalsIgnoreCase("Calmado")){
-                this.puntosDefensa+=2;
-            }
-            if(jugadores.get(i).getPersonalidad().equalsIgnoreCase("Normal")){
-                this.puntosDefensa++;
+    public void actualizarPuntosEstadisticas(){
+        puntosAtaque = 0;
+        puntosDefensa = 0;
+        for(Jugador jugador : jugadores) {
+            switch (jugador.getPersonalidad().toLowerCase()) {
+                case "irascible" -> puntosAtaque += 2;
+                case "normal" -> {
+                    puntosAtaque += 1;
+                    puntosDefensa += 1;
+                }
+                case "calmado" -> puntosDefensa += 2;
             }
         }
     }
@@ -157,5 +150,20 @@ public class Equipo {
         for(Jugador jugador : jugadores){
             jugador.getInfo();
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Equipo{" +
+                "nombre='" + nombre + '\'' +
+                ", jugadores=" + jugadores +
+                ", puntos=" + puntos +
+                ", golesFavor=" + golesFavor +
+                ", golesContra=" + golesContra +
+                ", estadio=" + estadio +
+                ", entrenador=" + entrenador +
+                ", puntosAtaque=" + puntosAtaque +
+                ", puntosDefensa=" + puntosDefensa +
+                '}';
     }
 }

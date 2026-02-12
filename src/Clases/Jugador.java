@@ -48,4 +48,13 @@ public class Jugador extends Persona{
         System.out.println("Posición: "+this.getPosicion());
         System.out.println(this.getGolesAnotados()+" goles");
     }
+
+    @Override
+    public String toString() {
+        return "Jugador{" +
+                "posicion='" + posicion + '\'' +
+                ", golesAnotados=" + golesAnotados +
+                ", precio=" + precio +
+                "} " + super.toString();
+    }
 }
