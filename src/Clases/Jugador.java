@@ -51,10 +51,9 @@ public class Jugador extends Persona{
 
     @Override
     public String toString() {
-        return "Jugador{" +
-                "posicion='" + posicion + '\'' +
-                ", golesAnotados=" + golesAnotados +
-                ", precio=" + precio +
-                "} " + super.toString();
+        return  super.toString() +
+                ",  Posicion= " + posicion +
+                ",  GolesAnotados= " + golesAnotados +
+                ",  Precio= " + precio+"€";
     }
 }

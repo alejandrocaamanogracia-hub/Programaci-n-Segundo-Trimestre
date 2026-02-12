@@ -27,6 +27,7 @@ public class Tienda {
     public void comprarJugador(Player player){
         //? ¿HACER QUE SOLO SALGAN 8?
         while(true) {
+            System.out.println();
             System.out.println("======TIENDA=====");
             System.out.println("Tu dinero:" + player.getDinero());
 

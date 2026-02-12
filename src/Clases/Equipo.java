@@ -141,7 +141,7 @@ public class Equipo {
 
 
     public void getInfo(){
-        System.out.println("");
+        System.out.println();
         System.out.println(this.getNombre().toUpperCase());
         System.out.println("--------------------------------------------------");
         System.out.println(this.getGolesFavor()+" goles a favor.");

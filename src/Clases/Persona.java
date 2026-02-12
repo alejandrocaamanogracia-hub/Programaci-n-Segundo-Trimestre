@@ -37,10 +37,9 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "Persona{" +
-                "nombre='" + nombre + '\'' +
-                ", edad=" + edad +
-                ", personalidad='" + personalidad + '\'' +
-                '}';
+        return  nombre.toUpperCase() +" => "+
+                " Edad= " + edad +
+                ",  Personalidad= " + personalidad + '\''
+                ;
     }
 }

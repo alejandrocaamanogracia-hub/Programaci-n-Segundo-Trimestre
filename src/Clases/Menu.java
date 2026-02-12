@@ -1,6 +1,6 @@
 package Clases;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class Menu {
 
@@ -12,6 +12,8 @@ public class Menu {
                         JUGAR TORNEO
                     =====================
                         1. Continuar
+                        2. Ver info de equipos
+                        3. Ver clasificación
                     """);
             String opcion = sc.nextLine();
             if(opcion.equals("1")){
@@ -23,6 +25,23 @@ public class Menu {
                 }
 
                 tienda.comprarJugador(player);
+            }
+            else if(opcion.equals("2")){
+                for(Equipo equipo : torneo.getEquipos()){
+                    equipo.getInfo();
+                }
+            }
+            else if(opcion.equals("3")){
+                List<Equipo> provisional = new ArrayList<Equipo>();
+                provisional.addAll(torneo.getEquipos());
+
+                provisional.sort((e1, e2) -> Integer.compare(e2.getPuntos(), e1.getPuntos()));
+
+                int i = 1;
+                for(Equipo equipo : provisional){
+                    System.out.println(i+". "+equipo.getNombre()+": "+equipo.getPuntos()+"ptos");
+                    i++;
+                }
 
             }
             else{
