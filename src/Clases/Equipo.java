@@ -20,8 +20,6 @@ public class Equipo {
     public Equipo(String nombre, Estadio estadio) {
         this.nombre = nombre;
         this.estadio = estadio;
-        recibirPuntosAtaque();
-        recibirPuntosDefensa();
     }
 
     public Estadio getEstadio() {
@@ -99,6 +97,8 @@ public class Equipo {
             }
             if(contador==0){
                 jugadores.add(jugador);
+                recibirPuntosAtaque();
+                recibirPuntosDefensa();
             }
         }
     }

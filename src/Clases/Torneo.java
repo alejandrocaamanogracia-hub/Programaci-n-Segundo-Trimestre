@@ -32,7 +32,5 @@ public class Torneo {
             Partido partido = partidos.get(i);
             partido.jugarPartido();
         }
-
-
     }
 }

@@ -3,10 +3,12 @@ package Clases;
 public class Jugador extends Persona{
     private String posicion;
     private int golesAnotados;
+    private int precio;
 
-    public Jugador(String nombre, int edad, String personalidad,  String posicion) {
+    public Jugador(String nombre, int edad, String personalidad,  String posicion, int precio) {
         super(nombre, edad, personalidad);
         this.posicion = posicion;
+        this.precio = precio;
     }
 
 
@@ -18,7 +20,6 @@ public class Jugador extends Persona{
         this.golesAnotados = golesAnotados;
     }
 
-
     public String getPosicion() {
         return posicion;
     }
@@ -27,6 +28,13 @@ public class Jugador extends Persona{
         this.posicion = posicion;
     }
 
+    public int getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(int precio) {
+        this.precio = precio;
+    }
 
     public void anotarGol(){
         this.golesAnotados++;

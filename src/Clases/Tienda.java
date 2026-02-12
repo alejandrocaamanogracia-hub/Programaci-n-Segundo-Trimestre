@@ -16,7 +16,6 @@ public class Tienda {
         }
     }
 
-d
 
     public void comprarJugador(Player player){
         //? ¿HACER QUE SOLO SALGAN 8?
