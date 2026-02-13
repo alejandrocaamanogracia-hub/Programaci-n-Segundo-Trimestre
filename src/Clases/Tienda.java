@@ -48,7 +48,6 @@ public class Tienda {
             opcion -= 1;
 
             if(opcion == -1){
-                System.out.println("Adios");
                 break;
             }
             if(opcion<0 || opcion >= jugadores.size()){
