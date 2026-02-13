@@ -16,10 +16,18 @@ public class Tienda {
         }
     }
 
+    public List<Jugador> getJugadores() {
+        return jugadores;
+    }
+
+    public void setJugadores(List<Jugador> jugadores) {
+        this.jugadores = jugadores;
+    }
 
     public void comprarJugador(Player player){
         //? ¿HACER QUE SOLO SALGAN 8?
         while(true) {
+            System.out.println();
             System.out.println("======TIENDA=====");
             System.out.println("Tu dinero:" + player.getDinero());
 
@@ -55,6 +63,7 @@ public class Tienda {
                 player.añadirJugador(jugadores.get(opcion));
                 jugadores.remove(opcion);
                 System.out.println(player);
+                break;
             }
         }
     }

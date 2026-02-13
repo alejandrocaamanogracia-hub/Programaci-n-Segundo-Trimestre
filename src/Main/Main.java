@@ -4,6 +4,7 @@ import Clases.*;
 
 public class Main {
     public static void main(String[] args) {
+        Menu menu = new Menu();
         Player player = new Player();
         Tienda tienda = new Tienda();
 
@@ -58,9 +59,7 @@ public class Main {
         torneo.agregarEquipo(equipo3);
         torneo.agregarEquipo(equipo4);
 
-        torneo.generarPartidos();
 
-        torneo.jugarPartidos();
-
+        menu.iniciar(torneo,player,tienda);
     }
 }

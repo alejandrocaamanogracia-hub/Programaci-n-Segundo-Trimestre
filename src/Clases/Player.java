@@ -1,7 +1,9 @@
 package Clases;
 
 public class Player {
-    private int dinero=100;
+    private int dinero=10000;
+
+    //! EL PLAYER DEBE COMENCAR CON JUGADORES EN EL EQUIPO
     private Equipo equipoPlayer = new Equipo();
 
     public Player() {
