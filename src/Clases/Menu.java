@@ -19,6 +19,14 @@ public class Menu {
             if(opcion.equals("1")){
                 torneo.generarPartidos();
                 torneo.jugarPartidos();
+                System.out.println();
+                while(true) {
+                    System.out.println("1. IR A TIENDA");
+                    String opcion1 = sc.nextLine();
+                    if (opcion1.equals("1")) {
+                        break;
+                    }
+                }
                 tienda.getJugadores().clear();
                 for(Equipo equipo : torneo.getEquipos()){
                     tienda.añadirJugadores(equipo.getJugadores());
