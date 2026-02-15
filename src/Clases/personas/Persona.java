@@ -1,9 +1,11 @@
-package Clases;
+package Clases.personas;
 
-public class Persona {
+public abstract class Persona {
     private String nombre;
     private int edad;
     private String personalidad;
+
+    public Persona() {}
 
     public Persona(String nombre, int edad, String personalidad) {
         this.nombre = nombre;
@@ -16,7 +18,9 @@ public class Persona {
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        if (nombre != null) {
+            this.nombre = nombre;
+        }
     }
 
     public String getPersonalidad() {
@@ -24,7 +28,9 @@ public class Persona {
     }
 
     public void setPersonalidad(String personalidad) {
-        this.personalidad = personalidad;
+        if (personalidad != null) {
+            this.personalidad = personalidad;
+        }
     }
 
     public int getEdad() {

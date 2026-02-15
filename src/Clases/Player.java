@@ -1,5 +1,8 @@
 package Clases;
 
+import Clases.equipos.Equipo;
+import Clases.personas.Jugador;
+
 public class Player {
     private int dinero=10000;
 

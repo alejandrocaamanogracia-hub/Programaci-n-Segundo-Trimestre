@@ -1,4 +1,7 @@
-package Clases;
+package Clases.equipos;
+
+import Clases.personas.Entrenador;
+import Clases.personas.Jugador;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +23,12 @@ public class Equipo {
     public Equipo(String nombre, Estadio estadio) {
         this.nombre = nombre;
         this.estadio = estadio;
+    }
+
+    public Equipo(String nombre, Estadio estadio, Entrenador entrenador) {
+        this.nombre = nombre;
+        this.estadio = estadio;
+        this.entrenador = entrenador;
     }
 
     public Estadio getEstadio() {
@@ -88,18 +97,7 @@ public class Equipo {
 
 
     public void agregarJugador(Jugador jugador){
-        if(jugadores.size()<5){
-            int contador = 0;
-            for(int i=0; i<jugadores.size(); i++){
-                if(jugadores.get(i).getNombre().equalsIgnoreCase(jugador.getNombre())){
-                    contador++;
-                }
-            }
-            if(contador==0){
-                jugadores.add(jugador);
-                actualizarPuntosEstadisticas();
-            }
-        }
+        jugadores.add(jugador);
     }
 
     public void marcarGoles(int goles){
