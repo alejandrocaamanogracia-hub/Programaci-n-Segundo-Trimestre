@@ -63,6 +63,7 @@ public class Partido{
             System.out.println("PARTIDO "+equipoLocal.getNombre()+" VS "+equipoVisitante.getNombre());
             System.out.println("UBICACIÓN: "+equipoLocal.getEstadio().getNombre());
             System.out.println("----------------------");
+            sleep();
             if(numGoles!=0) {
                 for (int i = 0; i < numGoles; i++) {
                     int equipo = rand.nextInt(1, 3);
@@ -100,6 +101,7 @@ public class Partido{
                             this.equipoLocal.recibirGoles();
                         }
                     }
+                    sleep();
                 }
             }
             getResultado();
@@ -119,6 +121,14 @@ public class Partido{
         else {
             equipoLocal.setPuntos(equipoLocal.getPuntos() + 1);
             equipoVisitante.setPuntos(equipoVisitante.getPuntos() + 1);
+        }
+    }
+
+    public void sleep(){
+        try {
+            Thread.sleep(1000); // pause de 2000 millisecondes (2 secondes)
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }
