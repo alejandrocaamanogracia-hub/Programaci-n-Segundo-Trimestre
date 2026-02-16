@@ -15,21 +15,21 @@ public class Main {
 
 
 
-        Jugador jugador1 = new Jugador("Juan", 23, "Normal", "Portero",1000);
-        Jugador jugador2 = new Jugador("Pablo", 27, "Normal", "otro",1200);
-        Jugador jugador3 = new Jugador("Mario", 21, "Irascible", "otro",1000);
+        Jugador jugador1 = new Jugador("Juan", 23, "Normal", "Portero",1000, "0001");
+        Jugador jugador2 = new Jugador("Pablo", 27, "Normal", "otro",1200, "0002");
+        Jugador jugador3 = new Jugador("Mario", 21, "Irascible", "otro",1000, "0003");
 
-        Jugador jugador4 = new Jugador("Jose", 28, "Irascible", "otro",1100);
-        Jugador jugador5 = new Jugador("Rubén", 20, "Normal", "otro",1400);
-        Jugador jugador6 = new Jugador("Sebas", 25, "Calmado", "Portero",1000);
+        Jugador jugador4 = new Jugador("Jose", 28, "Irascible", "otro",1100, "0004");
+        Jugador jugador5 = new Jugador("Rubén", 20, "Normal", "otro",1400, "0005");
+        Jugador jugador6 = new Jugador("Sebas", 25, "Calmado", "Portero",1000, "0006");
 
-        Jugador jugador7 = new Jugador("Alejandro", 23, "Calmado", "otro",900);
-        Jugador jugador8 = new Jugador("Raúl", 27,"Calmado", "otro",1100);
-        Jugador jugador9 = new Jugador("Adrián", 21, "Normal", "Portero",1000);
+        Jugador jugador7 = new Jugador("Alejandro", 23, "Calmado", "otro",900, "0007");
+        Jugador jugador8 = new Jugador("Raúl", 27,"Calmado", "otro",1100, "0008");
+        Jugador jugador9 = new Jugador("Adrián", 21, "Normal", "Portero",1000, "0009");
 
-        Jugador jugador10 = new Jugador("Alvaro", 23, "Normal", "otro",1300);
-        Jugador jugador11 = new Jugador("Sergio", 27, "Calmado", "Portero",1000);
-        Jugador jugador12 = new Jugador("Daniel", 21,"Irascible", "otro",1000);
+        Jugador jugador10 = new Jugador("Alvaro", 23, "Normal", "otro",1300, "00010");
+        Jugador jugador11 = new Jugador("Sergio", 27, "Calmado", "Portero",1000, "00011");
+        Jugador jugador12 = new Jugador("Daniel", 21,"Irascible", "otro",1000, "00012");
 
         Equipo equipo1 = new Equipo("Equipo1", estadio1);
         Equipo equipo2 = new Equipo("Equipo2", estadio2);

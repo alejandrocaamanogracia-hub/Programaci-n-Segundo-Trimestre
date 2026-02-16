@@ -5,8 +5,8 @@ public class Jugador extends Persona{
     private int golesAnotados;
     private int precio;
 
-    public Jugador(String nombre, int edad, String personalidad,  String posicion, int precio) {
-        super(nombre, edad, personalidad);
+    public Jugador(String nombre, int edad, String personalidad ,String posicion, int precio, String dni) {
+        super(nombre, edad, personalidad, dni);
         this.posicion = posicion;
         this.precio = precio;
     }
@@ -56,4 +56,6 @@ public class Jugador extends Persona{
                 ",  GolesAnotados= " + golesAnotados +
                 ",  Precio= " + precio+"€";
     }
+
+
 }

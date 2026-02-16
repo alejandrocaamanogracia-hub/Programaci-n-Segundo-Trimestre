@@ -1,5 +1,7 @@
 package Clases;
 
+import java.util.Objects;
+
 public class Estadio {
     private String nombre;
 
@@ -13,5 +15,12 @@ public class Estadio {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Estadio estadio = (Estadio) o;
+        return Objects.equals(nombre, estadio.nombre);
     }
 }

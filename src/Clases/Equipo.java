@@ -2,6 +2,7 @@ package Clases;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 public class Equipo {
@@ -165,5 +166,12 @@ public class Equipo {
                 ", puntosAtaque=" + puntosAtaque +
                 ", puntosDefensa=" + puntosDefensa +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Equipo equipo = (Equipo) o;
+        return Objects.equals(nombre, equipo.nombre) && Objects.equals(jugadores, equipo.jugadores) && Objects.equals(estadio, equipo.estadio) && Objects.equals(entrenador, equipo.entrenador);
     }
 }
