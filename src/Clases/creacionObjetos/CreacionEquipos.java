@@ -1,0 +1,116 @@
+package Clases.creacionObjetos;
+
+import Clases.equipos.Equipo;
+import Clases.equipos.Estadio;
+import Clases.personas.Entrenador;
+import Clases.personas.Jugador;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
+public class CreacionEquipos {
+
+    protected static List<Estadio> estadios = new ArrayList<Estadio>();
+    protected static List<Equipo> equipos = new ArrayList<Equipo>();
+
+    public static List<Estadio> getEstadios() {
+        return estadios;
+    }
+
+    public static List<Equipo> getEquipos() {
+        return equipos;
+    }
+
+    public static void CreacionEstadios() {
+
+        try{
+
+            InputStream lectura = CreacionEquipos.class.getResourceAsStream("/datos/estadios.txt");
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(lectura));
+
+            String linea;
+
+            while ((linea = br.readLine()) != null) {
+
+                String[] informacion = linea.split(",");
+
+                String nombre = informacion[0];
+                String ubicacion = informacion[1];
+                int capacidad = Integer.parseInt(informacion[2]);
+
+                estadios.add(new Estadio(nombre, ubicacion, capacidad));
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void CreacionEquipos() {
+
+        try{
+
+            InputStream lectura = CreacionEquipos.class.getResourceAsStream("/datos/equipos.txt");
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(lectura));
+
+            String linea;
+
+            while ((linea = br.readLine()) != null) {
+
+                String[] informacion = linea.split(",");
+
+                String nombre = informacion[0];
+                String estadio = informacion[1];
+                String entrenador = informacion[2];
+
+                Estadio estadioEquipo = null;
+                for (Estadio estadio1 : estadios) {
+                    if (estadio1.getNombre().equals(estadio)) {
+                        estadioEquipo = estadio1;
+                    }
+                }
+
+                List<Entrenador> entrenadores = CreacionPersonas.entrenadores;
+
+                Entrenador entrenadorEquipo = null;
+                for (int i = 0; i < entrenadores.size(); i++) {
+                    if (entrenadores.get(i).getNombre().equals(entrenador)) {
+                        entrenadorEquipo = (Entrenador) entrenadores.get(i);
+                    }
+                }
+
+                equipos.add(new Equipo(nombre, estadioEquipo, entrenadorEquipo));
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void RellenarEquipos() {
+
+        List<Jugador> jugadores = CreacionPersonas.jugadores;
+        for (int j=0; j<equipos.size(); j++) {
+
+            for (int i=0; i < jugadores.size(); i++) {
+
+                if (jugadores.get(i).getEquipo().getNombre().equals(equipos.get(j).getNombre())) {
+                    equipos.get(j).agregarJugador(jugadores.get(i));
+                }
+
+            }
+
+        }
+
+    }
+
+}

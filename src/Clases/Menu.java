@@ -1,5 +1,8 @@
 package Clases;
 
+import Clases.competiciones.Torneo;
+import Clases.equipos.Equipo;
+
 import java.util.*;
 
 public class Menu {

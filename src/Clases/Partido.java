@@ -1,5 +1,7 @@
 package Clases;
 
+import Clases.equipos.Equipo;
+
 import java.util.Random;
 
 public class Partido{

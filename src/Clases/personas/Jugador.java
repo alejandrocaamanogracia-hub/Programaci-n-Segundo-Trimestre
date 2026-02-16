@@ -1,14 +1,18 @@
-package Clases;
+package Clases.personas;
+
+import Clases.equipos.Equipo;
 
 public class Jugador extends Persona{
     private String posicion;
     private int golesAnotados;
     private int precio;
+    private Equipo equipo;
 
-    public Jugador(String nombre, int edad, String personalidad ,String posicion, int precio, String dni) {
-        super(nombre, edad, personalidad, dni);
+    public Jugador(String nombre, int edad, String personalidad ,String posicion, int precio,  Equipo equipo) {
+        super(nombre, edad, personalidad);
         this.posicion = posicion;
         this.precio = precio;
+        this.equipo = equipo;
     }
 
 
@@ -36,6 +40,14 @@ public class Jugador extends Persona{
         this.precio = precio;
     }
 
+    public Equipo getEquipo() {
+        return equipo;
+    }
+
+    public void setEquipo(Equipo equipo) {
+        this.equipo = equipo;
+    }
+
     public void anotarGol(){
         this.golesAnotados++;
         System.out.println(this.getNombre()+" ha marcado un gol");
@@ -56,6 +68,4 @@ public class Jugador extends Persona{
                 ",  GolesAnotados= " + golesAnotados +
                 ",  Precio= " + precio+"€";
     }
-
-
 }

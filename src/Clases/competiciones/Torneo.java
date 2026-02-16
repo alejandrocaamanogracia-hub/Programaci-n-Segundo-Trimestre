@@ -1,4 +1,7 @@
-package Clases;
+package Clases.competiciones;
+
+import Clases.equipos.Equipo;
+import Clases.Partido;
 
 import java.util.ArrayList;
 import java.util.List;

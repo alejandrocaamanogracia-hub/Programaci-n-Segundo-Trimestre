@@ -1,18 +1,18 @@
-package Clases;
+package Clases.personas;
 
-import java.util.Objects;
-
-public class Persona {
+public abstract class Persona {
     private String nombre;
     private int edad;
     private String personalidad;
     private String dni;
 
-    public Persona(String nombre, int edad, String personalidad, String dni) {
-        this.dni = dni;
+    public Persona() {}
+
+    public Persona(String nombre, int edad, String personalidad) {
         this.nombre = nombre;
         this.edad = edad;
         this.personalidad = personalidad;
+        this.dni = dni;
     }
 
     public String getNombre() {
@@ -20,7 +20,9 @@ public class Persona {
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        if (nombre != null) {
+            this.nombre = nombre;
+        }
     }
 
     public String getPersonalidad() {
@@ -28,7 +30,9 @@ public class Persona {
     }
 
     public void setPersonalidad(String personalidad) {
-        this.personalidad = personalidad;
+        if (personalidad != null) {
+            this.personalidad = personalidad;
+        }
     }
 
     public int getEdad() {
@@ -45,17 +49,5 @@ public class Persona {
                 " Edad= " + edad +
                 ",  Personalidad= " + personalidad + '\''
                 ;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Persona persona = (Persona) o;
-        return Objects.equals(dni, persona.dni);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(dni);
     }
 }
