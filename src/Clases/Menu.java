@@ -30,7 +30,6 @@ public class Menu {
                         break;
                     }
                 }
-                tienda.getJugadores().clear();
                 for(Equipo equipo : torneo.getEquipos()){
                     tienda.añadirJugadores(equipo.getJugadores());
                 }

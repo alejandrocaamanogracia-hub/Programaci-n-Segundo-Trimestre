@@ -99,16 +99,13 @@ public class CreacionEquipos {
     public static void RellenarEquipos() {
 
         List<Jugador> jugadores = CreacionPersonas.jugadores;
-        for (int j=0; j<equipos.size(); j++) {
-
-            for (int i=0; i < jugadores.size(); i++) {
-
-                if (jugadores.get(i).getEquipo().getNombre().equals(equipos.get(j).getNombre())) {
-                    equipos.get(j).agregarJugador(jugadores.get(i));
+        for (Equipo equipo : equipos) {
+            for (Jugador jugador : jugadores) {
+                if (jugador.getEquipo() != null &&
+                        jugador.getEquipo().getNombre().trim().equalsIgnoreCase(equipo.getNombre().trim())) {
+                    equipo.agregarJugador(jugador);
                 }
-
             }
-
         }
 
     }

@@ -105,8 +105,14 @@ public class Equipo {
         Random rand = new Random();
         for (int i = 0; i < goles; i++) {
             golesFavor++;
-            int index = rand.nextInt(jugadores.size());
-            jugadores.get(index).anotarGol();
+            if(jugadores.size()>0) {
+                int index = rand.nextInt(jugadores.size());
+                jugadores.get(index).anotarGol();
+            }
+            else{
+                System.out.println("NO FUNCIONA");
+                System.out.println(this);
+            }
         }
     }
 

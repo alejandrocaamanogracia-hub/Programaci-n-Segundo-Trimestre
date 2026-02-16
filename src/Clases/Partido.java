@@ -65,7 +65,7 @@ public class Partido{
             System.out.println("PARTIDO "+equipoLocal.getNombre()+" VS "+equipoVisitante.getNombre());
             System.out.println("UBICACIÓN: "+equipoLocal.getEstadio().getNombre());
             System.out.println("----------------------");
-            sleep();
+            //sleep();
             if(numGoles!=0) {
                 for (int i = 0; i < numGoles; i++) {
                     int equipo = rand.nextInt(1, 3);
@@ -103,7 +103,7 @@ public class Partido{
                             this.equipoLocal.recibirGoles();
                         }
                     }
-                    sleep();
+                    //sleep();
                 }
             }
             getResultado();

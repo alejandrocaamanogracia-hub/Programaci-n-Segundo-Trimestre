@@ -1,10 +1,9 @@
 package Clases.creacionObjetos;
 
 import Clases.equipos.Equipo;
-import Clases.equipos.Estadio;
 import Clases.personas.Entrenador;
 import Clases.personas.Jugador;
-import Clases.personas.Persona;
+import Clases.Tienda;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -54,7 +53,7 @@ public class CreacionPersonas {
 
     }
 
-    public static void CrearJugadores(){
+    public static void CrearJugadores(Tienda tienda){
 
         try{
 
@@ -79,13 +78,17 @@ public class CreacionPersonas {
 
                 Equipo equipoJugador = null;
 
-                for (int i  = 0; i < equipos.size(); i++) {
-                    if (equipos.get(i).getNombre().equals(equipo)) {
-                        equipoJugador = (Equipo) equipos.get(i);
+                for (Equipo e : CreacionEquipos.equipos) {
+                    if (e.getNombre().trim().equalsIgnoreCase(equipo)) {
+                        equipoJugador = e;
+                        break;
                     }
                 }
 
-                jugadores.add(new Jugador(nombre, edad, personalidad,posicion, precio, equipoJugador));
+                Jugador nuevo = new Jugador(nombre, edad, personalidad, posicion, precio, equipoJugador);
+                CreacionPersonas.jugadores.add(nuevo);
+                tienda.añadir(nuevo);
+
 
             }
 

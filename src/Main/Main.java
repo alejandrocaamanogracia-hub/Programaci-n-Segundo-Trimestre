@@ -11,24 +11,21 @@ import Clases.personas.Jugador;
 public class Main {
     public static void main(String[] args) {
 
-        CreacionPersonas.CrearEntrenador();
-        CreacionEquipos.CreacionEstadios();
-        CreacionEquipos.CreacionEquipos();
-        CreacionPersonas.CrearJugadores();
-
-        CreacionEquipos.RellenarEquipos();
-
-        System.out.println(CreacionEquipos.getEquipos());
-        System.out.println(CreacionEquipos.getEstadios());
-
-        System.out.println(CreacionPersonas.getEntrenadores());
-        System.out.println(CreacionPersonas.getJugadores());
-
-
         Menu menu = new Menu();
         Player player = new Player();
         Tienda tienda = new Tienda();
         Torneo torneo = new Torneo();
+
+        CreacionPersonas.CrearEntrenador();
+        CreacionEquipos.CreacionEstadios();
+        CreacionEquipos.CreacionEquipos();
+        CreacionPersonas.CrearJugadores(tienda);
+        CreacionEquipos.RellenarEquipos();
+
+
+        torneo.setEquipos(CreacionEquipos.getEquipos());
+
         menu.iniciar(torneo, player, tienda);
+
     }
 }

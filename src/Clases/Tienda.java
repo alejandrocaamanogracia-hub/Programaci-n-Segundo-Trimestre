@@ -22,6 +22,10 @@ public class Tienda {
         return jugadores;
     }
 
+    public void añadir(Jugador jugador){
+        this.jugadores.add(jugador);
+    }
+
     public void setJugadores(List<Jugador> jugadores) {
         this.jugadores = jugadores;
     }
@@ -34,7 +38,7 @@ public class Tienda {
             System.out.println("Tu dinero:" + player.getDinero());
 
             System.out.println("0. Salir");
-            for (int i = 0; i < jugadores.size(); i++) {
+            for (int i = 0; i < this.jugadores.size(); i++) {
                 System.out.println(i+1 + ". " + jugadores.get(i));
             }
 
@@ -67,5 +71,6 @@ public class Tienda {
                 break;
             }
         }
+        this.jugadores.clear();
     }
 }
