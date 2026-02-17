@@ -15,21 +15,7 @@ public class Main {
 
         MenuPruebas.Inicio();
 
-//        Menu menu = new Menu();
-//        Player player = new Player();
-//        Tienda tienda = new Tienda();
-//        Torneo torneo = new Torneo();
-//
-//        CreacionPersonas.CrearEntrenador();
-//        CreacionEquipos.CreacionEstadios();
-//        CreacionEquipos.CreacionEquipos();
-//        CreacionPersonas.CrearJugadores(tienda);
-//        CreacionEquipos.RellenarEquipos();
-//
-//
-//        torneo.setEquipos(CreacionEquipos.getEquipos());
-//
-//        menu.iniciar(torneo, player, tienda);
+
 
     }
 }

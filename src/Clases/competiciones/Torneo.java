@@ -10,70 +10,86 @@ import java.util.List;
 import java.util.Random;
 
 public class Torneo {
-    private List<Equipo> equipos = new ArrayList<Equipo>();
-    private List<Partido> partidos = new  ArrayList<Partido>();
 
-    public Torneo(){}
+    private String nombre;
+    private List<Jornada> jornadas;
 
+    public Torneo() {}
 
-    public List<Equipo> getEquipos() {
-        return equipos;
+    public Torneo(List<Jornada> jornadas,  String nombre) {
+        this.jornadas = jornadas;
+        this.nombre = nombre;
     }
 
-    public void setEquipos(List<Equipo> equipos) {
-        this.equipos = equipos;
+    public String getNombre() {
+        return nombre;
     }
 
-    public List<Partido> getPartidos() {
-        return partidos;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public void setPartidos(List<Partido> partidos) {
-        this.partidos = partidos;
+    public List<Jornada> getJornadas() {
+        return jornadas;
     }
 
-    public void agregarEquipo(Equipo equipo){
-        equipos.add(equipo);
+    public void setJornadas(List<Jornada> jornadas) {
+        this.jornadas = jornadas;
     }
 
-    public void hacerPartidos(){
-
-        equipos.clear();
-
-        equipos = new ArrayList<>(CreacionEquipos.equipos);
-
-        Collections.shuffle(equipos);
-
-        for(int i = 0; i < equipos.size()/2; i++){
-
-            partidos.add(new Partido(equipos.get(i), equipos.get(equipos.size()-i-1)));
-
-        }
-
-        for (int i = 0; i < partidos.size(); i++){
-            System.out.println(i+1+": "+partidos.get(i).getEquipoLocal().getNombre() + " " + partidos.get(i).getEquipoVisitante().getNombre());
-        }
-
+    @Override
+    public String toString() {
+        return "Torneo{" +
+                "nombre='" + nombre + '\'' +
+                ", jornadas=" + jornadas +
+                '}';
     }
 
-    public void generarPartidos(){
-        partidos.clear();
-        for(int i=0;i<equipos.size();i++){
-            for(int j=0;j<equipos.size();j++){
-                if(!equipos.get(i).getNombre().equals(equipos.get(j).getNombre())) {
-                    if (i < j) {
-                        partidos.add(new Partido(equipos.get(i), equipos.get(j)));
-                        partidos.add(new Partido(equipos.get(j), equipos.get(i)));
-                    }
-                }
-            }
-        }
-    }
-
-    public void jugarPartidos(){
-        for (int i = 0; i < partidos.size(); i++) {
-            Partido partido = partidos.get(i);
-            partido.jugarPartido();
-        }
-    }
+    //    private List<Equipo> equipos = new ArrayList<Equipo>();
+//    private List<Partido> partidos = new  ArrayList<Partido>();
+//
+//    public Torneo(){}
+//
+//
+//
+//    public List<Equipo> getEquipos() {
+//        return equipos;
+//    }
+//
+//    public void setEquipos(List<Equipo> equipos) {
+//        this.equipos = equipos;
+//    }
+//
+//  public List<Partido> getPartidos() {
+//        return partidos;
+//    }
+//
+//    public void setPartidos(List<Partido> partidos) {
+//        this.partidos = partidos;
+//    }
+//
+//    public void agregarEquipo(Equipo equipo){
+//        equipos.add(equipo);
+//    }
+//
+//    public void generarPartidos(){
+//        partidos.clear();
+//        for(int i=0;i<equipos.size();i++){
+//            for(int j=0;j<equipos.size();j++){
+//                if(!equipos.get(i).getNombre().equals(equipos.get(j).getNombre())) {
+//                    if (i < j) {
+//                        partidos.add(new Partido(equipos.get(i), equipos.get(j)));
+//                        partidos.add(new Partido(equipos.get(j), equipos.get(i)));
+//                    }
+//                }
+//            }
+//        }
+//    }
+//
+//    public void jugarPartidos(){
+//        for (int i = 0; i < partidos.size(); i++) {
+//            Partido partido = partidos.get(i);
+//            partido.jugarPartido();
+//       }
+//    }
 }
