@@ -5,7 +5,9 @@ import Clases.equipos.Equipo;
 import Clases.Partido;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class Torneo {
     private List<Equipo> equipos = new ArrayList<Equipo>();
@@ -32,6 +34,26 @@ public class Torneo {
 
     public void agregarEquipo(Equipo equipo){
         equipos.add(equipo);
+    }
+
+    public void hacerPartidos(){
+
+        equipos.clear();
+
+        equipos = new ArrayList<>(CreacionEquipos.equipos);
+
+        Collections.shuffle(equipos);
+
+        for(int i = 0; i < equipos.size()/2; i++){
+
+            partidos.add(new Partido(equipos.get(i), equipos.get(equipos.size()-i-1)));
+
+        }
+
+        for (int i = 0; i < partidos.size(); i++){
+            System.out.println(i+1+": "+partidos.get(i).getEquipoLocal().getNombre() + " " + partidos.get(i).getEquipoVisitante().getNombre());
+        }
+
     }
 
     public void generarPartidos(){
