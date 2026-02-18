@@ -30,6 +30,144 @@ public class Tienda {
         this.jugadores = jugadores;
     }
 
+    /**
+     * Permite cambiar la plantilla de los equipos al terminar una temporada.
+     * El jugador puede fichar jugadores del mercado libre (jugadores sin equipo o
+     * de otros equipos que quieran venderse) y también liberar jugadores de su equipo.
+     *
+     * En este caso, los jugadores disponibles en la tienda son los del mercado:
+     * al terminar la temporada, cada equipo puede "liberar" jugadores que van al mercado.
+     *
+     *   1. Ver plantilla actual y liberar jugadores
+     *   2. Fichar jugadores del mercado
+     */
+    public void cambiarPlantilla(Player player, List<Clases.equipos.Equipo> equipos) {
+        // Primero, reiniciar la lista de jugadores disponibles en el mercado
+        this.jugadores.clear();
+
+        // Añadir automáticamente algunos jugadores de cada equipo al mercado
+        // (simulando que liberan a 1-2 jugadores por equipo al final de temporada)
+        java.util.Random rand = new java.util.Random();
+        for (Clases.equipos.Equipo equipo : equipos) {
+            List<Jugador> plantilla = equipo.getJugadores();
+            if (plantilla.size() > 2) {
+                int numLiberar = 1 + rand.nextInt(2); // libera 1 o 2 jugadores
+                for (int i = 0; i < numLiberar; i++) {
+                    int idx = rand.nextInt(plantilla.size());
+                    Jugador liberado = plantilla.get(idx);
+                    this.jugadores.add(liberado);
+                    plantilla.remove(idx);
+                }
+            }
+        }
+
+        while (true) {
+            System.out.println();
+            System.out.println("╔══════════════════════════════════╗");
+            System.out.println("║   MERCADO DE FICHAJES - FIN DE   ║");
+            System.out.println("║          TEMPORADA               ║");
+            System.out.println("╚══════════════════════════════════╝");
+            System.out.println("Dinero disponible: " + player.getDinero() + "€");
+            System.out.println();
+            System.out.println("0. Salir del mercado");
+            System.out.println("1. Ver plantilla actual y liberar jugadores");
+            System.out.println("2. Fichar jugadores del mercado (" + this.jugadores.size() + " disponibles)");
+
+            int opcion;
+            while (true) {
+                try {
+                    opcion = Integer.parseInt(sc.nextLine());
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("Opción inválida, introduce un número");
+                }
+            }
+
+            if (opcion == 0) {
+                System.out.println("Saliendo del mercado de fichajes...");
+                break;
+            } else if (opcion == 1) {
+                // Mostrar plantilla del player y permitir liberar jugadores
+                List<Jugador> plantillaPlayer = player.getJugadores();
+                if (plantillaPlayer.isEmpty()) {
+                    System.out.println("Tu equipo no tiene jugadores.");
+                } else {
+                    System.out.println("\n--- TU PLANTILLA ---");
+                    for (int i = 0; i < plantillaPlayer.size(); i++) {
+                        System.out.println((i + 1) + ". " + plantillaPlayer.get(i));
+                    }
+                    System.out.println("0. Volver");
+                    System.out.println("Elige un jugador para liberarlo (obtienes el 50% de su valor):");
+
+                    int opLiberar;
+                    while (true) {
+                        try {
+                            opLiberar = Integer.parseInt(sc.nextLine());
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.out.println("Opción inválida");
+                        }
+                    }
+
+                    if (opLiberar == 0) continue;
+                    if (opLiberar < 1 || opLiberar > plantillaPlayer.size()) {
+                        System.out.println("Opción fuera de rango");
+                        continue;
+                    }
+
+                    Jugador liberado = plantillaPlayer.get(opLiberar - 1);
+                    int reembolso = liberado.getPrecio() / 2;
+                    player.setDinero(player.getDinero() + reembolso);
+                    this.jugadores.add(liberado); // pasa al mercado
+                    plantillaPlayer.remove(opLiberar - 1);
+                    System.out.println("Has liberado a " + liberado.getNombre() + ". Recibes " + reembolso + "€.");
+                }
+
+            } else if (opcion == 2) {
+                // Fichar un jugador del mercado
+                if (this.jugadores.isEmpty()) {
+                    System.out.println("No hay jugadores disponibles en el mercado.");
+                    continue;
+                }
+
+                System.out.println("\n--- MERCADO DE JUGADORES ---");
+                System.out.println("0. Volver");
+                for (int i = 0; i < this.jugadores.size(); i++) {
+                    System.out.println((i + 1) + ". " + this.jugadores.get(i));
+                }
+
+                int opFichar;
+                while (true) {
+                    try {
+                        opFichar = Integer.parseInt(sc.nextLine());
+                        break;
+                    } catch (NumberFormatException e) {
+                        System.out.println("Opción inválida");
+                    }
+                }
+
+                if (opFichar == 0) continue;
+                if (opFichar < 1 || opFichar > this.jugadores.size()) {
+                    System.out.println("Opción fuera de rango");
+                    continue;
+                }
+
+                Jugador elegido = this.jugadores.get(opFichar - 1);
+                if (elegido.getPrecio() > player.getDinero()) {
+                    System.out.println("No tienes suficiente dinero. Necesitas " + elegido.getPrecio() + "€.");
+                } else {
+                    player.setDinero(player.getDinero() - elegido.getPrecio());
+                    player.añadirJugador(elegido);
+                    this.jugadores.remove(opFichar - 1);
+                    System.out.println("¡Has fichado a " + elegido.getNombre() + " por " + elegido.getPrecio() + "€!");
+                    System.out.println("Dinero restante: " + player.getDinero() + "€");
+                }
+            } else {
+                System.out.println("Opción inválida");
+            }
+        }
+    }
+
     public void comprarJugador(Player player){
         //? ¿HACER QUE SOLO SALGAN 8?
         while(true) {

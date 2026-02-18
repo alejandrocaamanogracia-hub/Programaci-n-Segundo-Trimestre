@@ -9,7 +9,12 @@ public class Menu {
 
     public void iniciar(Torneo torneo, Player player, Tienda tienda) {
         Scanner sc = new Scanner(System.in);
+        int temporada = 1;
         while(true){
+            System.out.println();
+            System.out.println("╔══════════════════════════════════╗");
+            System.out.printf( "║        TEMPORADA %-3d             ║%n", temporada);
+            System.out.println("╚══════════════════════════════════╝");
             System.out.println("""
                     =====================
                         JUGAR TORNEO
@@ -23,18 +28,43 @@ public class Menu {
                 torneo.generarPartidos();
                 torneo.jugarPartidos();
                 System.out.println();
+                System.out.println("¡Temporada " + temporada + " finalizada!");
+                System.out.println();
+
+                // Clasificación final de la temporada
+                List<Equipo> clasificacion = new ArrayList<>(torneo.getEquipos());
+                clasificacion.sort((e1, e2) -> Integer.compare(e2.getPuntos(), e1.getPuntos()));
+                System.out.println("--- CLASIFICACIÓN FINAL TEMPORADA " + temporada + " ---");
+                int pos = 1;
+                for (Equipo e : clasificacion) {
+                    System.out.println(pos + ". " + e.getNombre() + ": " + e.getPuntos() + " ptos");
+                    pos++;
+                }
+                System.out.println();
+
                 while(true) {
-                    System.out.println("1. IR A TIENDA");
+                    System.out.println("1. IR A TIENDA (compra rápida)");
+                    System.out.println("2. MERCADO DE FICHAJES (cambiar plantilla - fin de temporada)");
                     String opcion1 = sc.nextLine();
                     if (opcion1.equals("1")) {
+                        for(Equipo equipo : torneo.getEquipos()){
+                            tienda.añadirJugadores(equipo.getJugadores());
+                        }
+                        tienda.comprarJugador(player);
+                        break;
+                    } else if (opcion1.equals("2")) {
+                        tienda.cambiarPlantilla(player, torneo.getEquipos());
                         break;
                     }
                 }
-                for(Equipo equipo : torneo.getEquipos()){
-                    tienda.añadirJugadores(equipo.getJugadores());
-                }
 
-                tienda.comprarJugador(player);
+                // Reiniciar puntos para la siguiente temporada
+                for (Equipo equipo : torneo.getEquipos()) {
+                    equipo.setPuntos(0);
+                    equipo.setGolesFavor(0);
+                    equipo.setGolesContra(0);
+                }
+                temporada++;
             }
             else if(opcion.equals("2")){
                 for(Equipo equipo : torneo.getEquipos()){
