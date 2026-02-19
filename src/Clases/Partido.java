@@ -133,15 +133,4 @@ public class Partido{
             e.printStackTrace();
         }
     }
-
-    @Override
-    public String toString() {
-        return "Partido{" +
-                "equipoLocal=" + equipoLocal +
-                ", equipoVisitante=" + equipoVisitante +
-                ", golesLocal=" + golesLocal +
-                ", golesVisitante=" + golesVisitante +
-                ", jugado=" + jugado +
-                '}';
-    }
 }

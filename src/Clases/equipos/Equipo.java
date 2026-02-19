@@ -21,6 +21,9 @@ public class Equipo {
     private int puntosDefensa;
 
     public Equipo(){}
+    public Equipo(String nombre){
+        this.nombre = nombre;
+    }
     public Equipo(String nombre, Estadio estadio) {
         this.nombre = nombre;
         this.estadio = estadio;
