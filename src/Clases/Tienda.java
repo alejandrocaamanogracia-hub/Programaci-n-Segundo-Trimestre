@@ -4,7 +4,6 @@ import Clases.personas.Jugador;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Tienda {
@@ -39,22 +38,7 @@ public class Tienda {
             System.out.println("Tu dinero:" + player.getDinero());
 
             System.out.println("0. Salir");
-
-            List numeros = new ArrayList();
-            Random random = new Random();
-            int aleatorio = 0;
-
-            for (int i = 0; i< 7; i++) {
-
-                do{
-                    aleatorio = random.nextInt(this.jugadores.size());
-                }while(numeros.contains(aleatorio));
-
-                numeros.add(aleatorio);
-
-            }
-
-            for (int i = 0; i < numeros.size(); i++) {
+            for (int i = 0; i < this.jugadores.size(); i++) {
                 System.out.println(i+1 + ". " + jugadores.get(i));
             }
 
@@ -69,24 +53,24 @@ public class Tienda {
             }
             opcion -= 1;
 
-//            if(opcion == -1){
-//                break;
-//            }
-//            if(opcion<0 || opcion >= jugadores.size()){
-//                continue;
-//            }
-//            else if(jugadores.get(opcion).getPrecio() > player.getDinero()){
-//                System.out.println("No tienes tanto dinero");
-//            }
-//            else{
-//                player.setDinero(player.getDinero() - jugadores.get(opcion).getPrecio());
-//                System.out.println("Has comprado a " + jugadores.get(opcion).getNombre());
-//                player.añadirJugador(jugadores.get(opcion));
-//                jugadores.remove(opcion);
-//                System.out.println(player);
-//                break;
-//            }
+            if(opcion == -1){
+                break;
+            }
+            if(opcion<0 || opcion >= jugadores.size()){
+                continue;
+            }
+            else if(jugadores.get(opcion).getPrecio() > player.getDinero()){
+                System.out.println("No tienes tanto dinero");
+            }
+            else{
+                player.setDinero(player.getDinero() - jugadores.get(opcion).getPrecio());
+                System.out.println("Has comprado a " + jugadores.get(opcion).getNombre());
+                player.añadirJugador(jugadores.get(opcion));
+                jugadores.remove(opcion);
+                System.out.println(player);
+                break;
+            }
         }
-//        this.jugadores.clear();
+        this.jugadores.clear();
     }
 }

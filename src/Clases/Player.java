@@ -11,10 +11,6 @@ public class Player {
 
     public Player() {}
 
-    public Player(Equipo equipoPlayer) {
-        this.equipoPlayer = equipoPlayer;
-    }
-
     public int getDinero() {
         return dinero;
     }
@@ -23,9 +19,9 @@ public class Player {
         this.dinero = dinero;
     }
 
-//    public void añadirJugador(Jugador jugador){
-//        equipoPlayer.agregarJugador(jugador);
-//    } CREO QUE HABRIA QUE QUITAR ESTO
+    public void añadirJugador(Jugador jugador){
+        equipoPlayer.agregarJugador(jugador);
+    }
 
     @Override
     public String toString() {

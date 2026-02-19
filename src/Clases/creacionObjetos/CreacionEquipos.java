@@ -14,7 +14,7 @@ import java.util.List;
 public class CreacionEquipos {
 
     protected static List<Estadio> estadios = new ArrayList<Estadio>();
-    public static List<Equipo> equipos = new ArrayList<Equipo>();
+    protected static List<Equipo> equipos = new ArrayList<Equipo>();
 
     public static List<Estadio> getEstadios() {
         return estadios;
