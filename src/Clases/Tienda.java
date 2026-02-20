@@ -1,5 +1,6 @@
 package Clases;
 
+import Clases.equipos.Equipo;
 import Clases.personas.Jugador;
 
 import java.util.ArrayList;
@@ -13,9 +14,7 @@ public class Tienda {
     public Tienda(){}
 
     public void añadirJugadores(List<Jugador> jugadores){
-        for(Jugador jugador : jugadores){
-            this.jugadores.add(jugador);
-        }
+        this.jugadores.addAll(jugadores);
     }
 
     public List<Jugador> getJugadores() {
@@ -30,28 +29,15 @@ public class Tienda {
         this.jugadores = jugadores;
     }
 
-    /**
-     * Permite cambiar la plantilla de los equipos al terminar una temporada.
-     * El jugador puede fichar jugadores del mercado libre (jugadores sin equipo o
-     * de otros equipos que quieran venderse) y también liberar jugadores de su equipo.
-     *
-     * En este caso, los jugadores disponibles en la tienda son los del mercado:
-     * al terminar la temporada, cada equipo puede "liberar" jugadores que van al mercado.
-     *
-     *   1. Ver plantilla actual y liberar jugadores
-     *   2. Fichar jugadores del mercado
-     */
-    public void cambiarPlantilla(Player player, List<Clases.equipos.Equipo> equipos) {
-        // Primero, reiniciar la lista de jugadores disponibles en el mercado
+    /** CAMBIAR PLANTILLA */
+    public void cambiarPlantilla(Player player, List<Equipo> equipos) {
         this.jugadores.clear();
 
-        // Añadir automáticamente algunos jugadores de cada equipo al mercado
-        // (simulando que liberan a 1-2 jugadores por equipo al final de temporada)
         java.util.Random rand = new java.util.Random();
-        for (Clases.equipos.Equipo equipo : equipos) {
+        for (Equipo equipo : equipos) {
             List<Jugador> plantilla = equipo.getJugadores();
             if (plantilla.size() > 2) {
-                int numLiberar = 1 + rand.nextInt(2); // libera 1 o 2 jugadores
+                int numLiberar = 1 + rand.nextInt(2);
                 for (int i = 0; i < numLiberar; i++) {
                     int idx = rand.nextInt(plantilla.size());
                     Jugador liberado = plantilla.get(idx);
@@ -62,13 +48,11 @@ public class Tienda {
         }
 
         while (true) {
-            System.out.println();
             System.out.println("╔══════════════════════════════════╗");
             System.out.println("║   MERCADO DE FICHAJES - FIN DE   ║");
             System.out.println("║          TEMPORADA               ║");
             System.out.println("╚══════════════════════════════════╝");
             System.out.println("Dinero disponible: " + player.getDinero() + "€");
-            System.out.println();
             System.out.println("0. Salir del mercado");
             System.out.println("1. Ver plantilla actual y liberar jugadores");
             System.out.println("2. Fichar jugadores del mercado (" + this.jugadores.size() + " disponibles)");
@@ -84,20 +68,19 @@ public class Tienda {
             }
 
             if (opcion == 0) {
-                System.out.println("Saliendo del mercado de fichajes...");
+                System.out.println("Saliendo del mercado...");
                 break;
             } else if (opcion == 1) {
-                // Mostrar plantilla del player y permitir liberar jugadores
                 List<Jugador> plantillaPlayer = player.getJugadores();
                 if (plantillaPlayer.isEmpty()) {
                     System.out.println("Tu equipo no tiene jugadores.");
                 } else {
-                    System.out.println("\n--- TU PLANTILLA ---");
+                    System.out.println("--- TU PLANTILLA ---");
                     for (int i = 0; i < plantillaPlayer.size(); i++) {
                         System.out.println((i + 1) + ". " + plantillaPlayer.get(i));
                     }
                     System.out.println("0. Volver");
-                    System.out.println("Elige un jugador para liberarlo (obtienes el 50% de su valor):");
+                    System.out.println("Elige un jugador para liberarlo (50% de su valor):");
 
                     int opLiberar;
                     while (true) {
@@ -118,19 +101,17 @@ public class Tienda {
                     Jugador liberado = plantillaPlayer.get(opLiberar - 1);
                     int reembolso = liberado.getPrecio() / 2;
                     player.setDinero(player.getDinero() + reembolso);
-                    this.jugadores.add(liberado); // pasa al mercado
+                    this.jugadores.add(liberado);
                     plantillaPlayer.remove(opLiberar - 1);
                     System.out.println("Has liberado a " + liberado.getNombre() + ". Recibes " + reembolso + "€.");
                 }
-
             } else if (opcion == 2) {
-                // Fichar un jugador del mercado
                 if (this.jugadores.isEmpty()) {
                     System.out.println("No hay jugadores disponibles en el mercado.");
                     continue;
                 }
 
-                System.out.println("\n--- MERCADO DE JUGADORES ---");
+                System.out.println("--- MERCADO DE JUGADORES ---");
                 System.out.println("0. Volver");
                 for (int i = 0; i < this.jugadores.size(); i++) {
                     System.out.println((i + 1) + ". " + this.jugadores.get(i));
@@ -169,15 +150,12 @@ public class Tienda {
     }
 
     public void comprarJugador(Player player){
-        //? ¿HACER QUE SOLO SALGAN 8?
         while(true) {
-            System.out.println();
-            System.out.println("======TIENDA=====");
-            System.out.println("Tu dinero:" + player.getDinero());
-
+            System.out.println("\n======TIENDA=====");
+            System.out.println("Tu dinero: " + player.getDinero() + "€");
             System.out.println("0. Salir");
             for (int i = 0; i < this.jugadores.size(); i++) {
-                System.out.println(i+1 + ". " + jugadores.get(i));
+                System.out.println((i+1) + ". " + jugadores.get(i));
             }
 
             int opcion;
@@ -186,24 +164,21 @@ public class Tienda {
                     opcion = Integer.parseInt(sc.nextLine());
                     break;
                 } catch (NumberFormatException e) {
-                    System.out.println("Opción invalida, introduzca un número");
+                    System.out.println("Opción inválida, introduce un nº");
                 }
             }
             opcion -= 1;
 
-            if(opcion == -1){
-                break;
-            }
-            if(opcion<0 || opcion >= jugadores.size()){
-                continue;
-            }
-            else if(jugadores.get(opcion).getPrecio() > player.getDinero()){
-                System.out.println("No tienes tanto dinero");
-            }
-            else{
-                player.setDinero(player.getDinero() - jugadores.get(opcion).getPrecio());
-                System.out.println("Has comprado a " + jugadores.get(opcion).getNombre());
-                player.añadirJugador(jugadores.get(opcion));
+            if(opcion == -1) break;
+            if(opcion < 0 || opcion >= jugadores.size()) continue;
+
+            Jugador seleccionado = jugadores.get(opcion);
+            if(seleccionado.getPrecio() > player.getDinero()){
+                System.out.println("No tienes dinero suficiente");
+            } else {
+                player.setDinero(player.getDinero() - seleccionado.getPrecio());
+                System.out.println("Has comprado a " + seleccionado.getNombre());
+                player.añadirJugador(seleccionado);
                 jugadores.remove(opcion);
                 System.out.println(player);
                 break;
