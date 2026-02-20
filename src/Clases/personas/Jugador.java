@@ -2,7 +2,7 @@ package Clases.personas;
 
 import Clases.equipos.Equipo;
 
-public class Jugador extends Persona{
+public final class Jugador extends Persona{
     private String posicion;
     private int golesAnotados;
     private int precio;

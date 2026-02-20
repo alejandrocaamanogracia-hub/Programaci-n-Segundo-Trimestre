@@ -1,6 +1,6 @@
 package Clases.personas;
 
-public class Entrenador extends Persona{
+public final class Entrenador extends Persona{
 
     public Entrenador(){}
 

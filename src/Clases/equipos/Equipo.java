@@ -33,6 +33,7 @@ public class Equipo {
         this.nombre = nombre;
         this.estadio = estadio;
         this.entrenador = entrenador;
+        actualizarPuntosEstadisticas();
     }
 
     public Estadio getEstadio() {
