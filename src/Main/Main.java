@@ -4,9 +4,11 @@ import Clases.*;
 import Clases.competiciones.Torneo;
 import Clases.creacionObjetos.CreacionEquipos;
 import Clases.creacionObjetos.CreacionPersonas;
+
 import java.util.List;
 
 public class Main {
+
     public static void main(String[] args) {
 
         Menu menu = new Menu();
@@ -33,4 +35,5 @@ public class Main {
 
         menu.iniciar(torneo, player, tienda);
     }
+
 }

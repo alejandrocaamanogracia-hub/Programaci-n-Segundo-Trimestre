@@ -125,12 +125,4 @@ public class Partido{
             equipoVisitante.setPuntos(equipoVisitante.getPuntos() + 1);
         }
     }
-
-    public void sleep(){
-        try {
-            Thread.sleep(1000); // pause de 2000 millisecondes (2 secondes)
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 }
