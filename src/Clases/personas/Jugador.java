@@ -1,14 +1,15 @@
 package Clases.personas;
 
+import Clases.enumeradores.Posiciones;
 import Clases.equipos.Equipo;
 
 public class Jugador extends Persona{
-    private String posicion;
+    private Posiciones posicion;
     private int golesAnotados;
     private int precio;
     private Equipo equipo;
 
-    public Jugador(String nombre, int edad, String personalidad ,String posicion, int precio,  Equipo equipo) {
+    public Jugador(String nombre, int edad, String personalidad ,Posiciones posicion, int precio,  Equipo equipo) {
         super(nombre, edad, personalidad);
         this.posicion = posicion;
         this.precio = precio;
@@ -24,11 +25,11 @@ public class Jugador extends Persona{
         this.golesAnotados = golesAnotados;
     }
 
-    public String getPosicion() {
+    public Posiciones getPosicion() {
         return posicion;
     }
 
-    public void setPosicion(String posicion) {
+    public void setPosicion(Posiciones posicion) {
         this.posicion = posicion;
     }
 
