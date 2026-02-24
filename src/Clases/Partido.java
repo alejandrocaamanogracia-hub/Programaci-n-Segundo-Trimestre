@@ -4,7 +4,7 @@ import Clases.equipos.Equipo;
 
 import java.util.Random;
 
-public class Partido{
+public class Partido {
     private Equipo equipoLocal;
     private Equipo equipoVisitante;
     private int golesLocal;
@@ -61,7 +61,7 @@ public class Partido{
         int numGoles = rand.nextInt(7);
 
         if(!jugado){
-            System.out.println();
+            System.out.println("\n");
             System.out.println("PARTIDO "+equipoLocal.getNombre()+" VS "+equipoVisitante.getNombre());
             System.out.println("UBICACIÓN: "+equipoLocal.getEstadio().getNombre());
             System.out.println("----------------------");
@@ -77,14 +77,16 @@ public class Partido{
                                 golesLocal++;
                                 this.equipoLocal.marcarGoles(1);
                                 this.equipoVisitante.recibirGoles();
+                                this.equipoVisitante.hacerFalta();
                             } else {
-                                System.out.println(this.equipoVisitante.getPortero() + " ha parado un gol");
+                                System.out.println(this.equipoVisitante.getPortero() + " ha hecho una atajada.");
                             }
                         }
-                        else{
+                        else {
                             golesLocal++;
                             this.equipoLocal.marcarGoles(1);
                             this.equipoVisitante.recibirGoles();
+                            this.equipoVisitante.hacerFalta();
                         }
                     }
                     else {
@@ -93,14 +95,16 @@ public class Partido{
                                 golesVisitante++;
                                 this.equipoVisitante.marcarGoles(1);
                                 this.equipoLocal.recibirGoles();
+                                this.equipoLocal.hacerFalta();
                             } else {
-                                System.out.println(this.equipoLocal.getPortero() + " ha parado un gol");
+                                System.out.println(this.equipoLocal.getPortero() + " ha hecho una atajada.");
                             }
                         }
                         else{
                             golesVisitante++;
                             this.equipoVisitante.marcarGoles(1);
                             this.equipoLocal.recibirGoles();
+                            this.equipoLocal.hacerFalta();
                         }
                     }
                     //sleep();
@@ -108,8 +112,7 @@ public class Partido{
             }
             getResultado();
             jugado = true;
-            System.out.println(equipoLocal.getNombre() +": "+golesLocal+" goles");
-            System.out.println(equipoVisitante.getNombre() +": "+golesVisitante+" goles");
+            System.out.println("----------------------");
         }
     }
 
@@ -124,5 +127,29 @@ public class Partido{
             equipoLocal.setPuntos(equipoLocal.getPuntos() + 1);
             equipoVisitante.setPuntos(equipoVisitante.getPuntos() + 1);
         }
+    }
+
+    @Override
+    public String toString() {
+
+        String resultado;
+
+        if (golesLocal > golesVisitante) {
+
+            resultado = "Ganador: " + equipoLocal.getNombre() + "\n";
+
+        } else if (golesVisitante > golesLocal) {
+
+            resultado = "Ganador: " + equipoVisitante.getNombre() + "\n";
+
+        } else {
+
+            resultado = "Empate\n";
+        }
+
+        return resultado +
+                equipoLocal.getNombre() + " " + golesLocal
+                + " - " +
+                golesVisitante + " " + equipoVisitante.getNombre();
     }
 }

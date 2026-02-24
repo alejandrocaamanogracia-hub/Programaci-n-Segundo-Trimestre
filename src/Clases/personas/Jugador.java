@@ -7,6 +7,8 @@ public class Jugador extends Persona{
     private int golesAnotados;
     private int precio;
     private Equipo equipo;
+    private int amarilla;
+    private int roja;
 
     public Jugador(String nombre, int edad, String personalidad ,String posicion, int precio,  Equipo equipo) {
         super(nombre, edad, personalidad);
@@ -48,9 +50,27 @@ public class Jugador extends Persona{
         this.equipo = equipo;
     }
 
+    public int getAmarilla() { return amarilla; }
+
+    public void setAmarilla(int amarilla) { this.amarilla = amarilla; }
+
+    public int getRoja() { return roja; }
+
+    public void setRoja(int roja) { this.roja = roja; }
+
     public void anotarGol(){
         this.golesAnotados++;
         System.out.println(this.getNombre()+" ha marcado un gol");
+    }
+
+    public void tarjetaAmarilla(){
+        this.amarilla++;
+        System.out.println(this.getNombre()+" ha hecho una falta dura y el arbitro le ha sacado una tarjeta amarilla.");
+    }
+
+    public void tarjetaRoja(){
+        this.roja++;
+        System.out.println(this.getNombre() + " ha recibido una tarjeta roja y se perderá en proximo partido.");
     }
 
     public void getInfo(){

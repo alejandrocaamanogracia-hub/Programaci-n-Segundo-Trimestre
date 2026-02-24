@@ -20,6 +20,8 @@ public class Equipo {
     private int puntosAtaque;
     private int puntosDefensa;
 
+    private int falta;
+
     public Equipo(){}
     public Equipo(String nombre){
         this.nombre = nombre;
@@ -33,6 +35,7 @@ public class Equipo {
         this.nombre = nombre;
         this.estadio = estadio;
         this.entrenador = entrenador;
+        actualizarPuntosEstadisticas();
     }
 
     public Estadio getEstadio() {
@@ -99,16 +102,19 @@ public class Equipo {
         this.puntosDefensa = puntosDefensa;
     }
 
-
     public void agregarJugador(Jugador jugador){
         jugadores.add(jugador);
     }
+
+    public int  getFalta() { return falta; }
+
+    public void setFalta(int falta) { this.falta = falta; }
 
     public void marcarGoles(int goles){
         Random rand = new Random();
         for (int i = 0; i < goles; i++) {
             golesFavor++;
-            if(jugadores.size()>0) {
+            if(jugadores.size() > 0) {
                 int index = rand.nextInt(jugadores.size());
                 jugadores.get(index).anotarGol();
             }
@@ -144,6 +150,27 @@ public class Equipo {
                 }
                 case "calmado" -> puntosDefensa += 2;
             }
+        }
+    }
+
+    public void hacerFalta(){
+        this.falta++;
+        if (!jugadores.isEmpty()) {
+            Random rand = new Random();
+            int index = rand.nextInt(jugadores.size());
+            Jugador jugadorFaltoso = jugadores.get(index);
+            if (falta >= 4) {
+                if (!jugadorFaltoso.getPosicion().equalsIgnoreCase("Portero")) {
+                    jugadorFaltoso.tarjetaAmarilla();
+                    if (jugadorFaltoso.getAmarilla() == 2) {
+                        jugadorFaltoso.tarjetaRoja();
+                    }
+                }
+            } else {
+                System.out.println(jugadorFaltoso.getNombre() + "ha cometido falta pero se salva de la tarjeta amarilla.");
+            }
+        } else {
+            System.out.println("Falta pitada, pero no hay jugadores en " + this.nombre);
         }
     }
 
