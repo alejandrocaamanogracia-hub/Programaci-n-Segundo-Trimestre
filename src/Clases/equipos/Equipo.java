@@ -131,7 +131,7 @@ public class Equipo {
 
     public String getPortero() {
         for (int i = 0; i < jugadores.size(); i++) {
-            if (jugadores.get(i).getPosicion().equalsIgnoreCase("Portero")) {
+            if (jugadores.get(i).getPosicion().equals("PORTERO")) {
                 return jugadores.get(i).getNombre();
             }
         }

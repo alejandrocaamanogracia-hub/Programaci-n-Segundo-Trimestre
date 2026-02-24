@@ -12,7 +12,6 @@ public abstract class Persona {
         this.nombre = nombre;
         this.edad = edad;
         this.personalidad = personalidad;
-        this.dni = dni;
     }
 
     public String getNombre() {
@@ -43,11 +42,18 @@ public abstract class Persona {
         this.edad = edad;
     }
 
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
     @Override
     public String toString() {
         return  nombre.toUpperCase() +" => "+
                 " Edad= " + edad +
-                ",  Personalidad= " + personalidad + '\''
-                ;
+                ",  Personalidad= " + personalidad + '\'';
     }
 }

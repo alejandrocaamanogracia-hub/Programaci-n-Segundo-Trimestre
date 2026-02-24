@@ -1,5 +1,6 @@
 package Clases.creacionObjetos;
 
+import Clases.enumeradores.Posiciones;
 import Clases.equipos.Equipo;
 import Clases.personas.Entrenador;
 import Clases.personas.Jugador;
@@ -70,7 +71,7 @@ public class CreacionPersonas {
                 String nombre = informacion[0];
                 int edad =  Integer.parseInt(informacion[1]);
                 String personalidad = informacion[2];
-                String posicion = informacion[3];
+                Posiciones posicion = Posiciones.valueOf(informacion[3].trim().toUpperCase());
                 int precio = Integer.parseInt(informacion[4]);
                 String equipo = informacion[5];
 
