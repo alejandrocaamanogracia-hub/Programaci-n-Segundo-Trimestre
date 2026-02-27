@@ -8,4 +8,8 @@ public final class Entrenador extends Persona{
         super(nombre, edad, personalidad);
     }
 
+    @Override
+    public String toString() {
+        return "";
+    }
 }
