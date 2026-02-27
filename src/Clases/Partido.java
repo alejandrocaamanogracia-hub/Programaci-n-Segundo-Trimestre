@@ -79,7 +79,7 @@ public class Partido {
                                 this.equipoVisitante.recibirGoles();
                                 this.equipoVisitante.hacerFalta();
                             } else {
-                                System.out.println(this.equipoVisitante.getPortero() + " ha hecho una atajada.");
+                                System.out.println(this.equipoVisitante.getPortero() + " ha hecho una parada.");
                             }
                         }
                         else {
@@ -97,10 +97,10 @@ public class Partido {
                                 this.equipoLocal.recibirGoles();
                                 this.equipoLocal.hacerFalta();
                             } else {
-                                System.out.println(this.equipoLocal.getPortero() + " ha hecho una atajada.");
+                                System.out.println(this.equipoLocal.getPortero() + " ha hecho una parada.");
                             }
                         }
-                        else{
+                        else {
                             golesVisitante++;
                             this.equipoVisitante.marcarGoles(1);
                             this.equipoLocal.recibirGoles();

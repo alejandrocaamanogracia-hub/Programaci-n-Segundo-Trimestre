@@ -18,4 +18,4 @@ TurfMoor,Burnley,21994
 GtechCommunityStadium,Londres,17250
 VitalityStadium,Bournemouth,11307
 KenilworthRoad,Luton,10356
-SpotifyCampNou,Player,105000
+SpotifyCampNou,Xtart,105000

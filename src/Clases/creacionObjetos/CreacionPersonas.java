@@ -88,7 +88,7 @@ public class CreacionPersonas {
 
                 Jugador nuevo = new Jugador(nombre, edad, personalidad, posicion, precio, equipoJugador);
                 CreacionPersonas.jugadores.add(nuevo);
-                tienda.añadir(nuevo);
+                tienda.add(nuevo);
 
 
             }

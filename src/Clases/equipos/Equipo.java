@@ -1,5 +1,6 @@
 package Clases.equipos;
 
+import Clases.enumeradores.Posiciones;
 import Clases.personas.Entrenador;
 import Clases.personas.Jugador;
 
@@ -112,15 +113,23 @@ public class Equipo {
 
     public void marcarGoles(int goles){
         Random rand = new Random();
+        List<Jugador> jugadoresDeCampo = new ArrayList<>();
+        for (Jugador jugador : jugadores) {
+            if (!jugador.getPosicion().equals("PORTERO")) {
+                jugadoresDeCampo.add(jugador);
+            }
+        }
+
         for (int i = 0; i < goles; i++) {
             golesFavor++;
-            if(jugadores.size() > 0) {
+            if (!jugadoresDeCampo.isEmpty()) {
+                int index =  rand.nextInt(jugadoresDeCampo.size());
+                jugadoresDeCampo.get(index).anotarGol();
+            } else if (!jugadores.isEmpty()) {
                 int index = rand.nextInt(jugadores.size());
                 jugadores.get(index).anotarGol();
-            }
-            else{
-                System.out.println("NO FUNCIONA");
-                System.out.println(this);
+            } else {
+                System.out.println("¡¡ NO FUNCIONA: EL EQUIPO NO TIENE JUGADORES !!");
             }
         }
     }
@@ -131,7 +140,7 @@ public class Equipo {
 
     public String getPortero() {
         for (int i = 0; i < jugadores.size(); i++) {
-            if (jugadores.get(i).getPosicion().equals("PORTERO")) {
+            if (jugadores.get(i).getPosicion().toString().toUpperCase() == "PORTERO"){
                 return jugadores.get(i).getNombre();
             }
         }
@@ -143,12 +152,32 @@ public class Equipo {
         puntosDefensa = 0;
         for(Jugador jugador : jugadores) {
             switch (jugador.getPersonalidad().toLowerCase()) {
-                case "irascible" -> puntosAtaque += 2;
+                case "irascible" -> {
+                    puntosAtaque += 2;
+                    puntosDefensa -= 2;
+                }
                 case "normal" -> {
                     puntosAtaque += 1;
                     puntosDefensa += 1;
                 }
-                case "calmado" -> puntosDefensa += 2;
+                case "calmado" -> {
+                    puntosDefensa += 2;
+                    puntosAtaque -= 2;
+                }
+            }
+            switch (entrenador.getPersonalidad().toLowerCase()) {
+                case "irascible" ->  {
+                    puntosAtaque -= 2;
+                    puntosDefensa -= 2;
+                }
+                case "normal" -> {
+                    puntosAtaque += 1;
+                    puntosDefensa += 1;
+                }
+                case "calmado" -> {
+                    puntosAtaque += 2;
+                    puntosDefensa += 2;
+                }
             }
         }
     }
@@ -159,15 +188,17 @@ public class Equipo {
             Random rand = new Random();
             int index = rand.nextInt(jugadores.size());
             Jugador jugadorFaltoso = jugadores.get(index);
+            System.out.println(jugadorFaltoso.getNombre() + " ha cometido una falta.");
             if (falta >= 4) {
-                if (!jugadorFaltoso.getPosicion().equalsIgnoreCase("Portero")) {
+                if (jugadorFaltoso.getPosicion() != Posiciones.PORTERO) {
                     jugadorFaltoso.tarjetaAmarilla();
                     if (jugadorFaltoso.getAmarilla() == 2) {
                         jugadorFaltoso.tarjetaRoja();
+                        if (jugadorFaltoso.getRoja() == 1) {
+                            jugadores.remove(jugadorFaltoso);
+                        }
                     }
                 }
-            } else {
-                System.out.println(jugadorFaltoso.getNombre() + "ha cometido falta pero se salva de la tarjeta amarilla.");
             }
         } else {
             System.out.println("Falta pitada, pero no hay jugadores en " + this.nombre);

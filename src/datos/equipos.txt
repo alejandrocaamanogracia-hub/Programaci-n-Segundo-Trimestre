@@ -18,4 +18,4 @@ Sunderland,AmexStadium,KeithAndrews
 TottenhamHotspur,TottenhamHotspurStadium,IgorTudor
 WestHamUnited,LondonStadium,SeanDyche
 WolverhamptonWanderers,MolineuxStadium,RobEdwards
-Player,SpotifyCampNou,HansiFlick
+Xtart,SpotifyCampNou,HansiFlick

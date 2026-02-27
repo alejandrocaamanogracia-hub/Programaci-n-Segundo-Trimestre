@@ -13,7 +13,7 @@ public class Menu {
         while(true){
             System.out.println();
             System.out.println("╔══════════════════════════════════╗");
-            System.out.printf( "║        TEMPORADA %-3d             ║%n", temporada);
+            System.out.printf( "║           TEMPORADA %-3d          ║%n", temporada);
             System.out.println("╚══════════════════════════════════╝");
             System.out.println("""
                     =====================
@@ -26,7 +26,7 @@ public class Menu {
             String opcion = sc.nextLine();
             if(opcion.equals("1")){
                 torneo.generarPartidos();
-                torneo.jugarPartidos();
+                torneo.jugarPartidos(player, tienda);
                 System.out.println();
                 System.out.println("¡Temporada " + temporada + " finalizada!");
                 System.out.println();
@@ -48,7 +48,7 @@ public class Menu {
                     String opcion1 = sc.nextLine();
                     if (opcion1.equals("1")) {
                         for(Equipo equipo : torneo.getEquipos()){
-                            tienda.añadirJugadores(equipo.getJugadores());
+                            tienda.addJugadores(equipo.getJugadores());
                         }
                         tienda.comprarJugador(player);
                         break;

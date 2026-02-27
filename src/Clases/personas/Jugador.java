@@ -71,7 +71,7 @@ public class Jugador extends Persona{
 
     public void tarjetaRoja(){
         this.roja++;
-        System.out.println(this.getNombre() + " ha recibido una tarjeta roja y se perderá en proximo partido.");
+        System.out.println(this.getNombre() + " ha hecho otra falta dura y se gana la segunda amarilla asi que el arbitro le saca tarjeta roja.");
     }
 
     public void getInfo(){

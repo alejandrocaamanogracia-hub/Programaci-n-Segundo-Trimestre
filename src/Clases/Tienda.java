@@ -13,7 +13,7 @@ public class Tienda {
 
     public Tienda(){}
 
-    public void añadirJugadores(List<Jugador> jugadores){
+    public void addJugadores(List<Jugador> jugadores){
         this.jugadores.addAll(jugadores);
     }
 
@@ -21,7 +21,7 @@ public class Tienda {
         return jugadores;
     }
 
-    public void añadir(Jugador jugador){
+    public void add(Jugador jugador){
         this.jugadores.add(jugador);
     }
 
@@ -49,8 +49,9 @@ public class Tienda {
 
         while (true) {
             System.out.println("╔══════════════════════════════════╗");
-            System.out.println("║   MERCADO DE FICHAJES - FIN DE   ║");
-            System.out.println("║          TEMPORADA               ║");
+            System.out.println("║                                  ║");
+            System.out.println("║       MERCADO DE FICHAJES        ║");
+            System.out.println("║                                  ║");
             System.out.println("╚══════════════════════════════════╝");
             System.out.println("Dinero disponible: " + player.getDinero() + "€");
             System.out.println("0. Salir del mercado");
@@ -138,7 +139,7 @@ public class Tienda {
                     System.out.println("No tienes suficiente dinero. Necesitas " + elegido.getPrecio() + "€.");
                 } else {
                     player.setDinero(player.getDinero() - elegido.getPrecio());
-                    player.añadirJugador(elegido);
+                    player.addJugador(elegido);
                     this.jugadores.remove(opFichar - 1);
                     System.out.println("¡Has fichado a " + elegido.getNombre() + " por " + elegido.getPrecio() + "€!");
                     System.out.println("Dinero restante: " + player.getDinero() + "€");
@@ -178,7 +179,7 @@ public class Tienda {
             } else {
                 player.setDinero(player.getDinero() - seleccionado.getPrecio());
                 System.out.println("Has comprado a " + seleccionado.getNombre());
-                player.añadirJugador(seleccionado);
+                player.addJugador(seleccionado);
                 jugadores.remove(opcion);
                 System.out.println(player);
                 break;

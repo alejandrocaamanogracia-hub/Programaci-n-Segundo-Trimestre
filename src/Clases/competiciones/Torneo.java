@@ -37,42 +37,53 @@ public class Torneo {
     public void generarPartidos(){
         partidos.clear();
         List<Equipo> lista = new ArrayList<>(equipos);
+        java.util.Collections.shuffle(lista);
+
         boolean esImpar=false;
 
-        if(lista.size()%2==0){
-            esImpar = true;
-        }
-
-        if(esImpar) {
+        if(lista.size() % 2 != 0){
             lista.add(new Equipo("Temporal"));
         }
 
         int numEquipos = lista.size();
         int numJornadas = numEquipos - 1;
 
+
         for (int jornada = 0; jornada < numJornadas; jornada++) {
             for (int i = 0; i < numEquipos / 2; i++) {
                 Equipo local = lista.get(i);
                 Equipo visitante = lista.get(numEquipos - 1 - i);
-                //Comprueba que ninguno de los participantes sea Temporal
+
+                if (jornada % 2 != 0 && i == 0) {
+                    Equipo temp = local;
+                    local = visitante;
+                    visitante = temp;
+                }
+
                 if (!local.getNombre().equals("Temporal") && !visitante.getNombre().equals("Temporal")) {
                     partidos.add(new Partido(local, visitante));
-                    partidos.add(new Partido(visitante, local));
                 }
             }
             Equipo ultimo = lista.remove(numEquipos - 1);
             lista.add(1, ultimo);
         }
+
+        int cantidadPartidosIda = partidos.size();
+        for (int i = 0; i < cantidadPartidosIda; i++) {
+            Partido partidoIda = partidos.get(i);
+            partidos.add(new Partido(partidoIda.getEquipoVisitante(), partidoIda.getEquipoLocal()));
+        }
     }
 
-    public void jugarPartidos() {
+    public void jugarPartidos(Clases.Player player, Clases.Tienda tienda) {
         int numEquipos = equipos.size();
         int numJornadas = numEquipos - 1;
+        int totalJornadas = numJornadas * 2;
         int partidosPorJornada = numEquipos / 2;
 
         int indice = 0;
         //Bucle de jornadas
-        for (int jornada = 1; jornada <= numJornadas; jornada++) {
+        for (int jornada = 1; jornada <= totalJornadas; jornada++) {
             System.out.println("=======================");
             System.out.println("     | JORNADA " + jornada + " |    ");
             System.out.println("=======================");
@@ -82,6 +93,22 @@ public class Torneo {
                 partido.jugarPartido();
                 System.out.println(partido);
                 indice++;
+            }
+
+            if (jornada == numJornadas) {
+                System.out.println("\n  ***********************************");
+                System.out.println("❄️ ¡SE ABRE EL MERCADO DE INVIERNO! ❄️");
+                System.out.println("  ***********************************\n");
+
+                tienda.cambiarPlantilla(player, equipos);
+            }
+
+            if (jornada == totalJornadas) {
+                System.out.println("\n  ***********************************");
+                System.out.println("☀️  ¡SE ABRE EL MERCADO DE VERANO!  ☀️");
+                System.out.println("  ***********************************\n");
+
+                tienda.cambiarPlantilla(player, equipos);
             }
 
             System.out.println();
