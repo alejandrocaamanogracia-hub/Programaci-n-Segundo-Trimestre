@@ -1,7 +1,10 @@
 package Clases;
 
 import Clases.competiciones.Torneo;
+import Clases.creacionObjetos.CreacionEquipos;
+import Clases.creacionObjetos.CreacionPersonas;
 import Clases.equipos.Equipo;
+import Clases.personas.Jugador;
 
 import java.util.*;
 
@@ -12,9 +15,9 @@ public class Menu {
         int temporada = 1;
         while(true){
             System.out.println();
-            System.out.println("╔══════════════════════════════════╗");
+            System.out.println(Colores.AZUL + Colores.NEGRITA + "╔══════════════════════════════════╗");
             System.out.printf( "║           TEMPORADA %-3d          ║%n", temporada);
-            System.out.println("╚══════════════════════════════════╝");
+            System.out.println("╚══════════════════════════════════╝" + Colores.RESET);
             System.out.println("""
                     =====================
                         JUGAR TORNEO
@@ -34,13 +37,42 @@ public class Menu {
                 // Clasificación final de la temporada
                 List<Equipo> clasificacion = new ArrayList<>(torneo.getEquipos());
                 clasificacion.sort((e1, e2) -> Integer.compare(e2.getPuntos(), e1.getPuntos()));
-                System.out.println("--- CLASIFICACIÓN FINAL TEMPORADA " + temporada + " ---");
+                System.out.println(Colores.NEGRITA+"--- CLASIFICACIÓN FINAL TEMPORADA " + temporada + " ---" + Colores.RESET);
                 int pos = 1;
                 for (Equipo e : clasificacion) {
                     System.out.println(pos + ". " + e.getNombre() + ": " + e.getPuntos() + " ptos");
                     pos++;
                 }
                 System.out.println();
+
+                Jugador pichichi = CreacionPersonas.jugadores.get(0);
+
+                int maxGoles = 0;
+
+                for (Jugador j : CreacionPersonas.jugadores) {
+                    if (j.getGolesAnotados() > maxGoles) {
+                        maxGoles = j.getGolesAnotados();
+                    }
+                }
+
+                System.out.println(Colores.AMARILLO_BRILLANTE+"Pichichi(s) con " + maxGoles + " goles:" + Colores.RESET);
+
+                for (Jugador j : CreacionPersonas.jugadores) {
+                    if (j.getGolesAnotados() == maxGoles) {
+                        System.out.println("- " + j.getNombre()
+                                + " (" + j.getEquipo().getNombre() + ")");
+                    }
+                }
+
+                System.out.println();
+
+                int maxRojas = 0;
+
+                for (Jugador j : CreacionPersonas.jugadores) {
+                    if (j.getRoja() > maxRojas) {
+                        maxRojas = j.getRoja();
+                    }
+                }
 
                 while(true) {
                     System.out.println("1. IR A TIENDA (compra rápida)");

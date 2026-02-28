@@ -1,7 +1,10 @@
 package Clases.personas;
 
+import Clases.Colores;
 import Clases.enumeradores.Posiciones;
 import Clases.equipos.Equipo;
+
+import java.awt.*;
 
 public class Jugador extends Persona{
     private Posiciones posicion;
@@ -61,17 +64,17 @@ public class Jugador extends Persona{
 
     public void anotarGol(){
         this.golesAnotados++;
-        System.out.println(this.getNombre()+" ha marcado un gol");
+        System.out.println(Colores.NEGRITA+Colores.CIAN_BRILLANTE +this.getNombre()+" ha marcado un gol" + Colores.RESET);
     }
 
     public void tarjetaAmarilla(){
         this.amarilla++;
-        System.out.println(this.getNombre()+" ha hecho una falta dura y el arbitro le ha sacado una tarjeta amarilla.");
+        System.out.println(Colores.NEGRITA+Colores.AMARILLO_BRILLANTE +  this.getNombre()+" ha hecho una falta dura y el arbitro le ha sacado una tarjeta amarilla."+Colores.RESET);
     }
 
     public void tarjetaRoja(){
         this.roja++;
-        System.out.println(this.getNombre() + " ha hecho otra falta dura y se gana la segunda amarilla asi que el arbitro le saca tarjeta roja.");
+        System.out.println(Colores.NEGRITA+Colores.ROJO_BRILLANTE + this.getNombre() + " ha hecho otra falta dura y se gana la segunda amarilla asi que el arbitro le saca tarjeta roja."+Colores.RESET);
     }
 
     public void getInfo(){

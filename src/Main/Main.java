@@ -25,7 +25,7 @@ public class Main {
 
         Player player = new Player();
 
-        System.out.println("¡Bienvenido! Tu equipo inicial:");
+        System.out.println(Colores.VERDE_BRILLANTE + Colores.NEGRITA +"¡Bienvenido! Tu equipo inicial:" + Colores.RESET);
         System.out.println(player);
 
         torneo.setEquipos(CreacionEquipos.getEquipos());

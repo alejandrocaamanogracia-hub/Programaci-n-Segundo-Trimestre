@@ -1,5 +1,6 @@
 package Clases.equipos;
 
+import Clases.Colores;
 import Clases.enumeradores.Posiciones;
 import Clases.personas.Entrenador;
 import Clases.personas.Jugador;
@@ -188,7 +189,7 @@ public class Equipo {
             Random rand = new Random();
             int index = rand.nextInt(jugadores.size());
             Jugador jugadorFaltoso = jugadores.get(index);
-            System.out.println(jugadorFaltoso.getNombre() + " ha cometido una falta.");
+            System.out.println(Colores.NEGRITA+Colores.ROJO_BRILLANTE +jugadorFaltoso.getNombre() + " ha cometido una falta." + Colores.RESET);
             if (falta >= 4) {
                 if (jugadorFaltoso.getPosicion() != Posiciones.PORTERO) {
                     jugadorFaltoso.tarjetaAmarilla();

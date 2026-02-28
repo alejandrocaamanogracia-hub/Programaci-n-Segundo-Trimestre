@@ -1,5 +1,6 @@
 package Clases.competiciones;
 
+import Clases.Colores;
 import Clases.creacionObjetos.CreacionEquipos;
 import Clases.equipos.Equipo;
 import Clases.Partido;
@@ -86,9 +87,9 @@ public class Torneo {
         int indice = 0;
         //Bucle de jornadas
         for (int jornada = 1; jornada <= totalJornadas; jornada++) {
-            System.out.println("=======================");
+            System.out.println(Colores.NEGRITA+Colores.MORADO_BRILLANTE+"=======================");
             System.out.println("     | JORNADA " + jornada + " |    ");
-            System.out.println("=======================");
+            System.out.println("======================="+Colores.RESET);
             // Bucle de partidos de cada jornada
             for (int i = 0; i < partidosPorJornada; i++) {
                 Partido partido = partidos.get(indice);
@@ -98,17 +99,17 @@ public class Torneo {
             }
 
             if (jornada == numJornadas) {
-                System.out.println("\n  ***********************************");
+                System.out.println(Colores.AZUL + Colores.NEGRITA +"\n  ***********************************");
                 System.out.println("❄️ ¡SE ABRE EL MERCADO DE INVIERNO! ❄️");
-                System.out.println("  ***********************************\n");
+                System.out.println("  ***********************************\n"+Colores.RESET);
 
                 tienda.cambiarPlantilla(player, equipos);
             }
 
             if (jornada == totalJornadas) {
-                System.out.println("\n  ***********************************");
+                System.out.println(Colores.AMARILLO + Colores.NEGRITA +"\n  ***********************************");
                 System.out.println("☀️  ¡SE ABRE EL MERCADO DE VERANO!  ☀️");
-                System.out.println("  ***********************************\n");
+                System.out.println("  ***********************************\n"+Colores.RESET);
 
                 tienda.cambiarPlantilla(player, equipos);
             }
@@ -136,7 +137,7 @@ public class Torneo {
                     }else if (opcion.equals("3")) {
                         List<Equipo> clasificacion = new ArrayList<>(torneo.getEquipos());
                         clasificacion.sort((e1, e2) -> Integer.compare(e2.getPuntos(), e1.getPuntos()));
-                        System.out.println("--- CLASIFICACIÓN ----");
+                        System.out.println(Colores.VERDE+"--- CLASIFICACIÓN ----");
                         int pos = 1;
                         for (Equipo e : clasificacion) {
                             System.out.println(pos + ". " + e.getNombre() + ": " + e.getPuntos() + " ptos");
@@ -162,9 +163,9 @@ public class Torneo {
         int indice = 0;
 
         for (int jornada = 1; jornada <= totalJornadas; jornada++) {
-            System.out.println("=======================");
+            System.out.println(Colores.NEGRITA+Colores.MORADO_BRILLANTE+"=======================");
             System.out.println("     | JORNADA " + jornada + " |    ");
-            System.out.println("=======================");
+            System.out.println("======================="+Colores.RESET);
             // Bucle de partidos de cada jornada
             for (int i = 0; i < partidosPorJornada; i++) {
                 Partido partido = partidos.get(indice);
@@ -174,17 +175,17 @@ public class Torneo {
             }
 
             if (jornada == numJornadas) {
-                System.out.println("\n  ***********************************");
+                System.out.println(Colores.AZUL + Colores.NEGRITA +"\n  ***********************************");
                 System.out.println("❄️ ¡SE ABRE EL MERCADO DE INVIERNO! ❄️");
-                System.out.println("  ***********************************\n");
+                System.out.println("  ***********************************\n"+Colores.RESET);
 
                 tienda.cambiarPlantilla(player, equipos);
             }
 
             if (jornada == totalJornadas) {
-                System.out.println("\n  ***********************************");
+                System.out.println(Colores.AMARILLO + Colores.NEGRITA +"\n  ***********************************");
                 System.out.println("☀️  ¡SE ABRE EL MERCADO DE VERANO!  ☀️");
-                System.out.println("  ***********************************\n");
+                System.out.println("  ***********************************\n"+Colores.RESET);
 
                 tienda.cambiarPlantilla(player, equipos);
             }

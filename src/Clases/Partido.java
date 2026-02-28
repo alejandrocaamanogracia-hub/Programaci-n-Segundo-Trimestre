@@ -3,6 +3,7 @@ package Clases;
 import Clases.equipos.Equipo;
 import Clases.personas.Arbitro;
 
+import java.awt.*;
 import java.util.Random;
 
 import static Clases.creacionObjetos.CreacionPersonas.arbitros;
@@ -69,7 +70,7 @@ public class Partido {
             System.out.println("UBICACIÓN: "+equipoLocal.getEstadio().getNombre());
             Arbitro arbitro = asignarArbitro();
             arbitro.saludar();
-            System.out.println("----------------------");
+            System.out.println(Colores.NEGRITA+Colores.MORADO_BRILLANTE+"----------------------" + Colores.RESET);
             //sleep();
             if(numGoles!=0) {
                 for (int i = 0; i < numGoles; i++) {
@@ -84,7 +85,7 @@ public class Partido {
                                 this.equipoVisitante.recibirGoles();
                                 this.equipoVisitante.hacerFalta();
                             } else {
-                                System.out.println(this.equipoVisitante.getPortero() + " ha hecho una parada.");
+                                System.out.println(Colores.NEGRITA + Colores.VERDE + this.equipoVisitante.getPortero() + " ha hecho una parada." + Colores.RESET);
                             }
                         }
                         else {
@@ -102,7 +103,7 @@ public class Partido {
                                 this.equipoLocal.recibirGoles();
                                 this.equipoLocal.hacerFalta();
                             } else {
-                                System.out.println(this.equipoLocal.getPortero() + " ha hecho una parada.");
+                                System.out.println(Colores.NEGRITA + Colores.VERDE + this.equipoVisitante.getPortero() + " ha hecho una parada." + Colores.RESET);
                             }
                         }
                         else {
@@ -117,7 +118,7 @@ public class Partido {
             }
             getResultado();
             jugado = true;
-            System.out.println("----------------------");
+            System.out.println(Colores.NEGRITA+Colores.MORADO_BRILLANTE+"----------------------" + Colores.RESET);
         }
     }
 
@@ -151,15 +152,15 @@ public class Partido {
 
         if (golesLocal > golesVisitante) {
 
-            resultado = "Ganador: " + equipoLocal.getNombre() + "\n";
+            resultado = Colores.NEGRITA+Colores.VERDE_BRILLANTE+"Ganador: " + equipoLocal.getNombre() + "\n" + Colores.RESET;
 
         } else if (golesVisitante > golesLocal) {
 
-            resultado = "Ganador: " + equipoVisitante.getNombre() + "\n";
+            resultado = Colores.NEGRITA+Colores.VERDE_BRILLANTE+ "Ganador: " + equipoVisitante.getNombre() + "\n" + Colores.RESET;
 
         } else {
 
-            resultado = "Empate\n";
+            resultado = Colores.NEGRITA + Colores.AMARILLO_BRILLANTE + "Empate\n" + Colores.RESET;
         }
 
         return resultado +

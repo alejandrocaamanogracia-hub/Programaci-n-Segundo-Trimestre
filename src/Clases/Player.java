@@ -55,12 +55,12 @@ public class Player {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("╔══════════════════════════════════╗\n");
+        sb.append(Colores.AZUL + "╔══════════════════════════════════╗\n");
         sb.append("║            XTART FC              ║\n");
         sb.append("╚══════════════════════════════════╝\n");
         sb.append("Dinero: ").append(dinero).append("€\n");
         sb.append("Jugadores (").append(equipoPlayer.getJugadores().size()).append("):\n");
-        sb.append("----------------------------------\n");
+        sb.append("----------------------------------\n" + Colores.RESET);
 
         if (equipoPlayer.getJugadores().isEmpty()) {
             sb.append("  Sin jugadores en el equipo.\n");
