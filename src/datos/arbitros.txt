@@ -1,0 +1,10 @@
+AntonioMateuLahoz,47,estricto
+CarlosDelCerroGrande,48,dialogante
+AlejandroHernandezHernandez,42,meticuloso
+JoseMariaSanchezMartinez,41,serio
+JuanMartinezMunuera,40,flexible
+JesusGilManzano,39,autoritario
+RicardoDeBurgosBengoetxea,38,tranquilo
+CesarSotoGrado,44,disciplinado
+GuillermoCuadraFernandez,36,calmado
+PabloGonzalezFuertes,45,riguroso

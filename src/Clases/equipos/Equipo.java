@@ -194,9 +194,6 @@ public class Equipo {
                     jugadorFaltoso.tarjetaAmarilla();
                     if (jugadorFaltoso.getAmarilla() == 2) {
                         jugadorFaltoso.tarjetaRoja();
-                        if (jugadorFaltoso.getRoja() == 1) {
-                            jugadores.remove(jugadorFaltoso);
-                        }
                     }
                 }
             }
@@ -214,7 +211,7 @@ public class Equipo {
         System.out.println(this.getGolesContra()+" goles en contra");
         System.out.println(this.getPuntos()+" puntos");
         for(Jugador jugador : jugadores){
-            jugador.getInfo();
+            System.out.println(jugador.getNombre() + " " + jugador.getPosicion());;
         }
     }
 

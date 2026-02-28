@@ -50,6 +50,10 @@ public abstract class Persona {
         this.dni = dni;
     }
 
+    public void saludar(){
+        System.out.println("Hola soy " + nombre);
+    }
+
     @Override
     public String toString() {
         return  nombre.toUpperCase() +" => "+

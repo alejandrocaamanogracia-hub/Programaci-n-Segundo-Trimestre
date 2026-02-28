@@ -1,8 +1,11 @@
 package Clases;
 
 import Clases.equipos.Equipo;
+import Clases.personas.Arbitro;
 
 import java.util.Random;
+
+import static Clases.creacionObjetos.CreacionPersonas.arbitros;
 
 public class Partido {
     private Equipo equipoLocal;
@@ -64,6 +67,8 @@ public class Partido {
             System.out.println("\n");
             System.out.println("PARTIDO "+equipoLocal.getNombre()+" VS "+equipoVisitante.getNombre());
             System.out.println("UBICACIÓN: "+equipoLocal.getEstadio().getNombre());
+            Arbitro arbitro = asignarArbitro();
+            arbitro.saludar();
             System.out.println("----------------------");
             //sleep();
             if(numGoles!=0) {
@@ -127,6 +132,16 @@ public class Partido {
             equipoLocal.setPuntos(equipoLocal.getPuntos() + 1);
             equipoVisitante.setPuntos(equipoVisitante.getPuntos() + 1);
         }
+    }
+
+    public Arbitro asignarArbitro(){
+
+        Random r = new Random();
+
+        int random =  r.nextInt(arbitros.size());
+
+        return arbitros.get(random);
+
     }
 
     @Override

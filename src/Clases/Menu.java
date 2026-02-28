@@ -26,7 +26,7 @@ public class Menu {
             String opcion = sc.nextLine();
             if(opcion.equals("1")){
                 torneo.generarPartidos();
-                torneo.jugarPartidos(player, tienda);
+                torneo.jugarPartidos(player, tienda, torneo);
                 System.out.println();
                 System.out.println("¡Temporada " + temporada + " finalizada!");
                 System.out.println();

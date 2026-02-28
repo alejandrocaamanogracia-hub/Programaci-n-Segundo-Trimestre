@@ -1,5 +1,6 @@
 package Clases.competiciones;
 
+import Clases.creacionObjetos.CreacionEquipos;
 import Clases.equipos.Equipo;
 import Clases.Partido;
 
@@ -12,7 +13,8 @@ public class Torneo {
     private List<Equipo> equipos = new ArrayList<Equipo>();
     private List<Partido> partidos = new ArrayList<Partido>();
 
-    public Torneo(){}
+    public Torneo() {
+    }
 
     public List<Equipo> getEquipos() {
         return equipos;
@@ -30,18 +32,18 @@ public class Torneo {
         this.partidos = partidos;
     }
 
-    public void agregarEquipo(Equipo equipo){
+    public void agregarEquipo(Equipo equipo) {
         equipos.add(equipo);
     }
 
-    public void generarPartidos(){
+    public void generarPartidos() {
         partidos.clear();
         List<Equipo> lista = new ArrayList<>(equipos);
         java.util.Collections.shuffle(lista);
 
-        boolean esImpar=false;
+        boolean esImpar = false;
 
-        if(lista.size() % 2 != 0){
+        if (lista.size() % 2 != 0) {
             lista.add(new Equipo("Temporal"));
         }
 
@@ -75,7 +77,7 @@ public class Torneo {
         }
     }
 
-    public void jugarPartidos(Clases.Player player, Clases.Tienda tienda) {
+    public void jugarPartidos(Clases.Player player, Clases.Tienda tienda, Torneo torneo) {
         int numEquipos = equipos.size();
         int numJornadas = numEquipos - 1;
         int totalJornadas = numJornadas * 2;
@@ -114,17 +116,80 @@ public class Torneo {
             System.out.println();
             System.out.println("JUGAR SIGUIENTE JORNADA");
             System.out.println("Pulsa 1 ->");
+            System.out.println("Simular el resto de las jornadas");
+            System.out.println("Pulsa 2 ->");
 
             while (true) {
                 String opcion = sc.nextLine();
-                if (!opcion.equals("1")) {
+                if (!opcion.equals("1") && !opcion.equals("2") && !opcion.equals("3")) {
                     System.out.println("JUGAR SIGUIENTE JORNADA");
                     System.out.println("Pulsa 1 ->");
-                }
-                else{
-                    break;
+                    System.out.println("Simular el resto de las jornadas");
+                    System.out.println("Pulsa 2 ->");
+                    System.out.println("Ver clasificación");
+                    System.out.println("Pulsa 3 ->");
+                } else {
+                    if (opcion.equals("2")) {
+                        simularJornadas(player, tienda);
+                        jornada = totalJornadas + 1;
+                        break;
+                    }else if (opcion.equals("3")) {
+                        List<Equipo> clasificacion = new ArrayList<>(torneo.getEquipos());
+                        clasificacion.sort((e1, e2) -> Integer.compare(e2.getPuntos(), e1.getPuntos()));
+                        System.out.println("--- CLASIFICACIÓN ----");
+                        int pos = 1;
+                        for (Equipo e : clasificacion) {
+                            System.out.println(pos + ". " + e.getNombre() + ": " + e.getPuntos() + " ptos");
+                            pos++;
+                        }
+                        System.out.println();
+                    }
+                    else if (opcion.equals("1")) {
+                        break;
+                    }
                 }
             }
         }
+    }
+
+    public void simularJornadas(Clases.Player player, Clases.Tienda tienda) {
+
+        int numEquipos = equipos.size();
+        int numJornadas = numEquipos - 1;
+        int totalJornadas = numJornadas * 2;
+        int partidosPorJornada = numEquipos / 2;
+
+        int indice = 0;
+
+        for (int jornada = 1; jornada <= totalJornadas; jornada++) {
+            System.out.println("=======================");
+            System.out.println("     | JORNADA " + jornada + " |    ");
+            System.out.println("=======================");
+            // Bucle de partidos de cada jornada
+            for (int i = 0; i < partidosPorJornada; i++) {
+                Partido partido = partidos.get(indice);
+                partido.jugarPartido();
+                System.out.println(partido);
+                indice++;
+            }
+
+            if (jornada == numJornadas) {
+                System.out.println("\n  ***********************************");
+                System.out.println("❄️ ¡SE ABRE EL MERCADO DE INVIERNO! ❄️");
+                System.out.println("  ***********************************\n");
+
+                tienda.cambiarPlantilla(player, equipos);
+            }
+
+            if (jornada == totalJornadas) {
+                System.out.println("\n  ***********************************");
+                System.out.println("☀️  ¡SE ABRE EL MERCADO DE VERANO!  ☀️");
+                System.out.println("  ***********************************\n");
+
+                tienda.cambiarPlantilla(player, equipos);
+            }
+
+        }
+
     }
 }
