@@ -6,6 +6,7 @@ import Clases.creacionObjetos.CreacionPersonas;
 import Clases.equipos.Equipo;
 import Clases.personas.Jugador;
 
+import javax.swing.plaf.synth.ColorType;
 import java.util.*;
 
 public class Menu {
@@ -66,13 +67,21 @@ public class Menu {
 
                 System.out.println();
 
-                int maxRojas = 0;
-
-                for (Jugador j : CreacionPersonas.jugadores) {
-                    if (j.getRoja() > maxRojas) {
-                        maxRojas = j.getRoja();
+                for (int i = 0; i < clasificacion.size(); i++) {
+                    if (clasificacion.get(i).getNombre().equalsIgnoreCase("Xtart")) {
+                        if (i == 0){
+                            player.setDinero(player.getDinero() + 10000);
+                            System.out.println(Colores.AMARILLO_BRILLANTE+"Has ganada la liga por lo que se te premia con 10000 €");
+                        }else if (i<0 && i>10){
+                            player.setDinero(player.getDinero() + 5000);
+                            System.out.println(Colores.AZUL+"Has quedado en el top 10 por lo que se te premia con 5000 €");
+                        }else {
+                            System.out.println("No has logrado entrar en el top 10");
+                        }
                     }
                 }
+
+                System.out.println();
 
                 while(true) {
                     System.out.println("1. IR A TIENDA (compra rápida)");
