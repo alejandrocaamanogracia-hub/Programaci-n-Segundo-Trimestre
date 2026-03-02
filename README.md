@@ -18,7 +18,7 @@ Se ha organizado según la estructura de carpetas necesarias para Java y añadie
 ## 🥅 CÓMO ABRIR:
 1. Clona el repositorio:
 ```bash
-git clone https://github.com/alejandrocaamanogracia-hub/Programaci-n-Segundo-Trimestre/tree/Carlos
+git clone https://github.com/alejandrocaamanogracia-hub/Programaci-n-Segundo-Trimestre
 ```
 2. Accede a las carpeta del proyecto /src/Main.
 3. Ejecuta el archivo Main
