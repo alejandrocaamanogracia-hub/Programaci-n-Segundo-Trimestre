@@ -112,6 +112,7 @@ public class Equipo {
     public void marcarGoles(int goles){
         Random rand = new Random();
         List<Jugador> jugadoresDeCampo = new ArrayList<>();
+
         for (Jugador jugador : jugadores) {
             if (!jugador.getPosicion().equals("PORTERO")) {
                 jugadoresDeCampo.add(jugador);
