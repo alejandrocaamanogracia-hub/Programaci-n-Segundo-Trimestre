@@ -18,7 +18,7 @@ Se ha organizado según la estructura de carpetas necesarias para Java y añadie
 ## 🥅 CÓMO ABRIR:
 1. Clona el repositorio:
 ```bash
-git clone https://github.com/Tek-H/LenguajeMarcas_2EV.git
+git clone https://github.com/alejandrocaamanogracia-hub/Programaci-n-Segundo-Trimestre/tree/Carlos
 ```
-2. Accede a la carpeta del proyecto.
-3. Abre cualquier archivo `.html` en el navegador
+2. Accede a las carpeta del proyecto /src/Main.
+3. Ejecuta el archivo Main
