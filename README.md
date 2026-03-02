@@ -7,9 +7,6 @@
 ## 📖 DESCRIPCIÓN:
 Este proyecto de GitHub consiste en una aplicación de Java que simula un torneo de fútbol dividido en jornadas. Permite que el jugador altere su plantilla lo que modifica el resultado de los pasrtidos gracias al sistema de estadisticas de la aplicación.
 
-## 🌲 ESTRUCTURA DE RAMAS
-Este repositorio consta de cinco ramas en total. Cuatro de ellas se han dedicado a que cada miembro del grupo desarrolle su parte del proyecto. La quinta rama, llamada master, actúa como rama principal del repositorio en la que se han unido las distintaas ramas de trabajo.
-
 ## 📂 ESTRUCTURA DE CARPETAS:
 Se ha organizado según la estructura de carpetas necesarias para Java y añadiendo en src las carpetas y archivos necesarios. La estructura principal se divide en:
 - Directorio Main: contiene la clase principal en la que se ejecuta el programa.
