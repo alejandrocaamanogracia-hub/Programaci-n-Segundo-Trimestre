@@ -116,7 +116,7 @@ public class Equipo {
         Random rand = new Random();
         List<Jugador> jugadoresDeCampo = new ArrayList<>();
         for (Jugador jugador : jugadores) {
-            if (!jugador.getPosicion().equals("PORTERO")) {
+            if (!jugador.getPosicion().toString().equals("PORTERO")) {
                 jugadoresDeCampo.add(jugador);
             }
         }
