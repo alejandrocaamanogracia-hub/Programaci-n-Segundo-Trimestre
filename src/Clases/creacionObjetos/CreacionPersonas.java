@@ -19,14 +19,6 @@ public class CreacionPersonas {
     public static List<Jugador>  jugadores = new ArrayList<Jugador>();
     public static List<Arbitro> arbitros = new ArrayList<>();
 
-    public static List<Entrenador> getEntrenadores() {
-        return entrenadores;
-    }
-
-    public static List<Jugador> getJugadores() {
-        return jugadores;
-    }
-
     public static void CrearEntrenador(){
 
         try{

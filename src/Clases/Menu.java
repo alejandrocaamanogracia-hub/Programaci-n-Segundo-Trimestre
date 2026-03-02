@@ -1,7 +1,6 @@
 package Clases;
 
 import Clases.competiciones.Torneo;
-import Clases.creacionObjetos.CreacionEquipos;
 import Clases.creacionObjetos.CreacionPersonas;
 import Clases.equipos.Equipo;
 import Clases.personas.Jugador;

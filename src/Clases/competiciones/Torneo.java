@@ -1,6 +1,7 @@
 package Clases.competiciones;
 
 import Clases.Colores;
+import Clases.Player;
 import Clases.creacionObjetos.CreacionEquipos;
 import Clases.equipos.Equipo;
 import Clases.Partido;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Torneo {
+public class Torneo extends Player {
     private Scanner sc = new Scanner(System.in);
     private List<Equipo> equipos = new ArrayList<Equipo>();
     private List<Partido> partidos = new ArrayList<Partido>();
