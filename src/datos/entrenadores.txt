@@ -18,3 +18,4 @@ RegisLeBris,0,calmado
 NunoEspiritoSanto,0,irascible
 RobEdwards,0,normal
 IgorTudor,47,calmado
+HansiFlick,61,calmado

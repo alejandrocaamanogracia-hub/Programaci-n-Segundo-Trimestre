@@ -1,14 +1,20 @@
 package Clases.personas;
 
+import Clases.Colores;
+import Clases.enumeradores.Posiciones;
 import Clases.equipos.Equipo;
 
-public final class Jugador extends Persona{
-    private String posicion;
+import java.awt.*;
+
+public class Jugador extends Persona{
+    private Posiciones posicion;
     private int golesAnotados;
     private int precio;
     private Equipo equipo;
+    private int amarilla;
+    private int roja;
 
-    public Jugador(String nombre, int edad, String personalidad ,String posicion, int precio,  Equipo equipo) {
+    public Jugador(String nombre, int edad, String personalidad ,Posiciones posicion, int precio,  Equipo equipo) {
         super(nombre, edad, personalidad);
         this.posicion = posicion;
         this.precio = precio;
@@ -24,11 +30,11 @@ public final class Jugador extends Persona{
         this.golesAnotados = golesAnotados;
     }
 
-    public String getPosicion() {
+    public Posiciones getPosicion() {
         return posicion;
     }
 
-    public void setPosicion(String posicion) {
+    public void setPosicion(Posiciones posicion) {
         this.posicion = posicion;
     }
 
@@ -48,9 +54,27 @@ public final class Jugador extends Persona{
         this.equipo = equipo;
     }
 
+    public int getAmarilla() { return amarilla; }
+
+    public void setAmarilla(int amarilla) { this.amarilla = amarilla; }
+
+    public int getRoja() { return roja; }
+
+    public void setRoja(int roja) { this.roja = roja; }
+
     public void anotarGol(){
         this.golesAnotados++;
-        System.out.println(this.getNombre()+" ha marcado un gol");
+        System.out.println(Colores.NEGRITA+Colores.CIAN_BRILLANTE +this.getNombre()+" ha marcado un gol" + Colores.RESET);
+    }
+
+    public void tarjetaAmarilla(){
+        this.amarilla++;
+        System.out.println(Colores.NEGRITA+Colores.AMARILLO_BRILLANTE +  this.getNombre()+" ha hecho una falta dura y el arbitro le ha sacado una tarjeta amarilla."+Colores.RESET);
+    }
+
+    public void tarjetaRoja(){
+        this.roja++;
+        System.out.println(Colores.NEGRITA+Colores.ROJO_BRILLANTE + this.getNombre() + " ha hecho otra falta dura y se gana la segunda amarilla asi que el arbitro le saca tarjeta roja."+Colores.RESET);
     }
 
     public void getInfo(){
@@ -63,11 +87,9 @@ public final class Jugador extends Persona{
 
     @Override
     public String toString() {
-        return "Jugador{" +
-                "posicion='" + posicion + '\'' +
-                ", golesAnotados=" + golesAnotados +
-                ", precio=" + precio +
-                ", equipo=" + equipo +
-                "} " + super.toString();
+        return  super.toString() +
+                ",  Posicion= " + posicion +
+                ",  GolesAnotados= " + golesAnotados +
+                ",  Precio= " + precio+"€";
     }
 }

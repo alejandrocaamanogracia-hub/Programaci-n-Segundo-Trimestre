@@ -1,10 +1,14 @@
 package Clases;
 
 import Clases.equipos.Equipo;
+import Clases.personas.Arbitro;
 
+import java.awt.*;
 import java.util.Random;
 
-public class Partido{
+import static Clases.creacionObjetos.CreacionPersonas.arbitros;
+
+public class Partido {
     private Equipo equipoLocal;
     private Equipo equipoVisitante;
     private int golesLocal;
@@ -61,10 +65,12 @@ public class Partido{
         int numGoles = rand.nextInt(7);
 
         if(!jugado){
-            System.out.println();
+            System.out.println("\n");
             System.out.println("PARTIDO "+equipoLocal.getNombre()+" VS "+equipoVisitante.getNombre());
             System.out.println("UBICACIÓN: "+equipoLocal.getEstadio().getNombre());
-            System.out.println("----------------------");
+            Arbitro arbitro = asignarArbitro();
+            arbitro.saludar();
+            System.out.println(Colores.NEGRITA+Colores.MORADO_BRILLANTE+"----------------------" + Colores.RESET);
             //sleep();
             if(numGoles!=0) {
                 for (int i = 0; i < numGoles; i++) {
@@ -77,14 +83,16 @@ public class Partido{
                                 golesLocal++;
                                 this.equipoLocal.marcarGoles(1);
                                 this.equipoVisitante.recibirGoles();
+                                this.equipoVisitante.hacerFalta();
                             } else {
-                                System.out.println(this.equipoVisitante.getPortero() + " ha parado un gol");
+                                System.out.println(Colores.NEGRITA + Colores.VERDE + this.equipoVisitante.getPortero() + " ha hecho una parada." + Colores.RESET);
                             }
                         }
-                        else{
+                        else {
                             golesLocal++;
                             this.equipoLocal.marcarGoles(1);
                             this.equipoVisitante.recibirGoles();
+                            this.equipoVisitante.hacerFalta();
                         }
                     }
                     else {
@@ -93,14 +101,16 @@ public class Partido{
                                 golesVisitante++;
                                 this.equipoVisitante.marcarGoles(1);
                                 this.equipoLocal.recibirGoles();
+                                this.equipoLocal.hacerFalta();
                             } else {
-                                System.out.println(this.equipoLocal.getPortero() + " ha parado un gol");
+                                System.out.println(Colores.NEGRITA + Colores.VERDE + this.equipoVisitante.getPortero() + " ha hecho una parada." + Colores.RESET);
                             }
                         }
-                        else{
+                        else {
                             golesVisitante++;
                             this.equipoVisitante.marcarGoles(1);
                             this.equipoLocal.recibirGoles();
+                            this.equipoLocal.hacerFalta();
                         }
                     }
                     //sleep();
@@ -108,8 +118,7 @@ public class Partido{
             }
             getResultado();
             jugado = true;
-            System.out.println(equipoLocal.getNombre() +": "+golesLocal+" goles");
-            System.out.println(equipoVisitante.getNombre() +": "+golesVisitante+" goles");
+            System.out.println(Colores.NEGRITA+Colores.MORADO_BRILLANTE+"----------------------" + Colores.RESET);
         }
     }
 
@@ -124,5 +133,39 @@ public class Partido{
             equipoLocal.setPuntos(equipoLocal.getPuntos() + 1);
             equipoVisitante.setPuntos(equipoVisitante.getPuntos() + 1);
         }
+    }
+
+    public Arbitro asignarArbitro(){
+
+        Random r = new Random();
+
+        int random =  r.nextInt(arbitros.size());
+
+        return arbitros.get(random);
+
+    }
+
+    @Override
+    public String toString() {
+
+        String resultado;
+
+        if (golesLocal > golesVisitante) {
+
+            resultado = Colores.NEGRITA+Colores.VERDE_BRILLANTE+"Ganador: " + equipoLocal.getNombre() + "\n" + Colores.RESET;
+
+        } else if (golesVisitante > golesLocal) {
+
+            resultado = Colores.NEGRITA+Colores.VERDE_BRILLANTE+ "Ganador: " + equipoVisitante.getNombre() + "\n" + Colores.RESET;
+
+        } else {
+
+            resultado = Colores.NEGRITA + Colores.AMARILLO_BRILLANTE + "Empate\n" + Colores.RESET;
+        }
+
+        return resultado +
+                equipoLocal.getNombre() + " " + golesLocal
+                + " - " +
+                golesVisitante + " " + equipoVisitante.getNombre();
     }
 }
