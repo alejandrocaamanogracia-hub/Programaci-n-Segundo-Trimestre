@@ -19,4 +19,7 @@ git clone https://github.com/alejandrocaamanogracia-hub/Programaci-n-Segundo-Tri
 ```
 2. Accede a las carpeta del proyecto /src/Main.
 3. Ejecuta el archivo Main
+
+## UML:
+
 ![src.png](src.png)
