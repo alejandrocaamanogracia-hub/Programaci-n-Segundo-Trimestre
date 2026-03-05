@@ -99,14 +99,13 @@ public class Jugador extends Persona{
 
     @Override
     public String toString() {
-        return "Jugador{" +
-                "equipo=" + equipo +
-                ", posicion=" + posicion +
-                ", golesAnotados=" + golesAnotados +
-                ", precio=" + precio +
-                ", faltas=" + faltas +
-                ", amarilla=" + amarilla +
-                ", roja=" + roja +
-                "} " + super.toString();
+        return
+                Colores.AZUL +"equipo =" + equipo +Colores.RESET +
+                ", posicion =" + posicion +Colores.RESET +
+                ", golesAnotados =" + golesAnotados +Colores.RESET +
+                        Colores.VERDE + ", precio =" + precio +Colores.RESET +
+                        Colores.ROJO + ", faltas =" + faltas +Colores.RESET +
+                        Colores.AMARILLO + ", amarilla =" + amarilla +Colores.RESET +
+                        Colores.ROJO +", roja =" + roja + Colores.RESET ;
     }
 }

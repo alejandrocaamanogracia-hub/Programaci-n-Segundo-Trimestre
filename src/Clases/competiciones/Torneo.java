@@ -120,12 +120,15 @@ public class Torneo {
             }
 
             System.out.println();
-            System.out.println("JUGAR SIGUIENTE JORNADA");
             System.out.println("Pulsa 1 ->");
-            System.out.println("Simular el resto de las jornadas");
+            System.out.println("JUGAR SIGUIENTE JORNADA");
+
             System.out.println("Pulsa 2 ->");
-            System.out.println("Ver clasificación");
+            System.out.println("Simular el resto de las jornadas");
+
             System.out.println("Pulsa 3 ->");
+            System.out.println("Ver clasificación");
+
 
             while (true) {
                 String opcion = sc.nextLine();
@@ -164,12 +167,14 @@ public class Torneo {
                         }
 
                         System.out.println();
-                        System.out.println("JUGAR SIGUIENTE JORNADA");
                         System.out.println("Pulsa 1 ->");
-                        System.out.println("Simular el resto de las jornadas");
+                        System.out.println("JUGAR SIGUIENTE JORNADA");
                         System.out.println("Pulsa 2 ->");
-                        System.out.println("Ver clasificación");
+                        System.out.println("Simular el resto de las jornadas");
                         System.out.println("Pulsa 3 ->");
+                        System.out.println("Ver clasificación");
+                        System.out.println();
+
                     }
                     else if (opcion.equals("1")) {
                         break;

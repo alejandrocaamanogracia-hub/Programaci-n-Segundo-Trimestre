@@ -226,4 +226,9 @@ public class Equipo {
             System.out.println(jugador.getNombre() + " " + jugador.getPosicion());;
         }
     }
+
+    @Override
+    public String toString() {
+        return nombre + '\'' ;
+    }
 }

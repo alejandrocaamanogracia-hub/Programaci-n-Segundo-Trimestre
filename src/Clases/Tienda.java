@@ -171,7 +171,7 @@ public class Tienda {
                 System.out.println("--- MERCADO DE JUGADORES ---");
                 System.out.println("0. Volver");
                 for (int i = 0; i < this.jugadoresMercado.size(); i++) {
-                    System.out.println((i + 1) + ". " + this.jugadoresMercado.get(i));
+                    System.out.println((i + 1) + ". " + Colores.NEGRITA + this.jugadoresMercado.get(i).getNombre() + Colores.RESET + "." + this.jugadoresMercado.get(i));
                 }
 
                 int opFichar;
